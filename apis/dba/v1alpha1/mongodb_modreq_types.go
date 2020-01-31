@@ -16,7 +16,10 @@ limitations under the License.
 
 package v1alpha1
 
-import metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+import (
+	v1 "k8s.io/api/core/v1"
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+)
 
 const (
 	ResourceCodeMongoDBModificationRequest     = "mgmodreq"
@@ -29,12 +32,11 @@ const (
 
 // +genclient
 // +genclient:nonNamespaced
-// +genclient:skipVerbs=updateStatus
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 // +kubebuilder:object:root=true
-// +kubebuilder:resource:path=mongodbmodificationrequests,singular=mongodbmodificationrequest,shortName=mgmodreq,categories={datastore,kubedb,appscode}
+// +kubebuilder:resource:path=mongodbmodificationrequests,singular=mongodbmodificationrequest,shortName=mgmodreq,scope=Cluster,categories={datastore,kubedb,appscode}
 type MongoDBModificationRequest struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
 	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
@@ -42,15 +44,21 @@ type MongoDBModificationRequest struct {
 	Status            MongoDBModificationRequestStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
 }
 
-// MongoDBModificationRequestSpec is the spec for elasticsearch version
+// MongoDBModificationRequestSpec is the spec for mongodb version
 type MongoDBModificationRequestSpec struct {
+	Version string              `json:"version,omitempty" protobuf:"bytes,1,opt,name=version"`
+	MongoDB *v1.ObjectReference `json:"mongodb,omitempty" protobuf:"bytes,2,opt,name=mongoDB"`
 }
 
-// MongoDBModificationRequestStatus is the status for elasticsearch version
+// MongoDBModificationRequestStatus is the status for mongodb version
 type MongoDBModificationRequestStatus struct {
 	// Conditions applied to the request, such as approval or denial.
 	// +optional
 	Conditions []MongoDBModificationRequestCondition `json:"conditions,omitempty" protobuf:"bytes,1,rep,name=conditions"`
+	// observedGeneration is the most recent generation observed for this resource. It corresponds to the
+	// resource's generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty" protobuf:"varint,2,opt,name=observedGeneration"`
 }
 
 type MongoDBModificationRequestCondition struct {

@@ -18129,10 +18129,25 @@ func schema_apimachinery_apis_dba_v1alpha1_MongoDBModificationRequestSpec(ref co
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "MongoDBModificationRequestSpec is the spec for elasticsearch version",
+				Description: "MongoDBModificationRequestSpec is the spec for mongodb version",
 				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"version": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"mongodb": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.ObjectReference"),
+						},
+					},
+				},
 			},
 		},
+		Dependencies: []string{
+			"k8s.io/api/core/v1.ObjectReference"},
 	}
 }
 
@@ -18140,7 +18155,7 @@ func schema_apimachinery_apis_dba_v1alpha1_MongoDBModificationRequestStatus(ref 
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "MongoDBModificationRequestStatus is the status for elasticsearch version",
+				Description: "MongoDBModificationRequestStatus is the status for mongodb version",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"conditions": {
@@ -18154,6 +18169,13 @@ func schema_apimachinery_apis_dba_v1alpha1_MongoDBModificationRequestStatus(ref 
 									},
 								},
 							},
+						},
+					},
+					"observedGeneration": {
+						SchemaProps: spec.SchemaProps{
+							Description: "observedGeneration is the most recent generation observed for this resource. It corresponds to the resource's generation, which is updated on mutation by the API Server.",
+							Type:        []string{"integer"},
+							Format:      "int64",
 						},
 					},
 				},

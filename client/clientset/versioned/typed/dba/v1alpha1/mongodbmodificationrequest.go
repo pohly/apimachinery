@@ -40,6 +40,7 @@ type MongoDBModificationRequestsGetter interface {
 type MongoDBModificationRequestInterface interface {
 	Create(*v1alpha1.MongoDBModificationRequest) (*v1alpha1.MongoDBModificationRequest, error)
 	Update(*v1alpha1.MongoDBModificationRequest) (*v1alpha1.MongoDBModificationRequest, error)
+	UpdateStatus(*v1alpha1.MongoDBModificationRequest) (*v1alpha1.MongoDBModificationRequest, error)
 	Delete(name string, options *v1.DeleteOptions) error
 	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
 	Get(name string, options v1.GetOptions) (*v1alpha1.MongoDBModificationRequest, error)
@@ -120,6 +121,21 @@ func (c *mongoDBModificationRequests) Update(mongoDBModificationRequest *v1alpha
 	err = c.client.Put().
 		Resource("mongodbmodificationrequests").
 		Name(mongoDBModificationRequest.Name).
+		Body(mongoDBModificationRequest).
+		Do().
+		Into(result)
+	return
+}
+
+// UpdateStatus was generated because the type contains a Status member.
+// Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
+
+func (c *mongoDBModificationRequests) UpdateStatus(mongoDBModificationRequest *v1alpha1.MongoDBModificationRequest) (result *v1alpha1.MongoDBModificationRequest, err error) {
+	result = &v1alpha1.MongoDBModificationRequest{}
+	err = c.client.Put().
+		Resource("mongodbmodificationrequests").
+		Name(mongoDBModificationRequest.Name).
+		SubResource("status").
 		Body(mongoDBModificationRequest).
 		Do().
 		Into(result)
