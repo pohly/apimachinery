@@ -17616,10 +17616,27 @@ func schema_apimachinery_apis_dba_v1alpha1_ElasticsearchModificationRequestSpec(
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "ElasticsearchModificationRequestSpec is the spec for elasticsearch version",
+				Description: "ElasticsearchModificationRequestSpec is the spec for ElasticsearchModificationRequest object",
 				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"version": {
+						SchemaProps: spec.SchemaProps{
+							Description: "ElasticsearchVersion object name",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"elasticsearchRef": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Elasticsearch object reference",
+							Ref:         ref("k8s.io/api/core/v1.ObjectReference"),
+						},
+					},
+				},
 			},
 		},
+		Dependencies: []string{
+			"k8s.io/api/core/v1.ObjectReference"},
 	}
 }
 
@@ -17641,6 +17658,13 @@ func schema_apimachinery_apis_dba_v1alpha1_ElasticsearchModificationRequestStatu
 									},
 								},
 							},
+						},
+					},
+					"observedGeneration": {
+						SchemaProps: spec.SchemaProps{
+							Description: "observedGeneration is the most recent generation observed for this resource. It corresponds to the resource's generation, which is updated on mutation by the API Server.",
+							Type:        []string{"integer"},
+							Format:      "int64",
 						},
 					},
 				},

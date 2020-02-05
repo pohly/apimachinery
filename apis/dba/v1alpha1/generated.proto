@@ -21,6 +21,7 @@ syntax = 'proto2';
 
 package kubedb.dev.apimachinery.apis.dba.v1alpha1;
 
+import "k8s.io/api/core/v1/generated.proto";
 import "k8s.io/apimachinery/pkg/apis/meta/v1/generated.proto";
 import "k8s.io/apimachinery/pkg/runtime/generated.proto";
 import "k8s.io/apimachinery/pkg/runtime/schema/generated.proto";
@@ -29,7 +30,10 @@ import "k8s.io/apimachinery/pkg/runtime/schema/generated.proto";
 option go_package = "v1alpha1";
 
 // +kubebuilder:object:root=true
-// +kubebuilder:resource:path=elasticsearchmodificationrequests,singular=elasticsearchmodificationrequest,shortName=esmodreq,categories={datastore,kubedb,appscode}
+// +kubebuilder:resource:path=elasticsearchmodificationrequests,singular=elasticsearchmodificationrequest,shortName=esmodreq,scope=Cluster,categories={datastore,kubedb,appscode}
+// +kubebuilder:subresource:status
+// +kubebuilder:printcolumn:name="Status",type="string",JSONPath=".status.phase"
+// +kubebuilder:printcolumn:name="Age",type="date",JSONPath=".metadata.creationTimestamp"
 message ElasticsearchModificationRequest {
   optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
 
@@ -63,8 +67,13 @@ message ElasticsearchModificationRequestList {
   repeated ElasticsearchModificationRequest items = 2;
 }
 
-// ElasticsearchModificationRequestSpec is the spec for elasticsearch version
+// ElasticsearchModificationRequestSpec is the spec for ElasticsearchModificationRequest object
 message ElasticsearchModificationRequestSpec {
+  // ElasticsearchVersion object name
+  optional string version = 1;
+
+  // Elasticsearch object reference
+  optional k8s.io.api.core.v1.ObjectReference elasticsearchRef = 2;
 }
 
 // ElasticsearchModificationRequestStatus is the status for elasticsearch version
@@ -72,6 +81,11 @@ message ElasticsearchModificationRequestStatus {
   // Conditions applied to the request, such as approval or denial.
   // +optional
   repeated ElasticsearchModificationRequestCondition conditions = 1;
+
+  // observedGeneration is the most recent generation observed for this resource. It corresponds to the
+  // resource's generation, which is updated on mutation by the API Server.
+  // +optional
+  optional int64 observedGeneration = 2;
 }
 
 // +kubebuilder:object:root=true
