@@ -21,6 +21,7 @@ syntax = 'proto2';
 
 package kubedb.dev.apimachinery.apis.dba.v1alpha1;
 
+import "k8s.io/api/core/v1/generated.proto";
 import "k8s.io/apimachinery/pkg/apis/meta/v1/generated.proto";
 import "k8s.io/apimachinery/pkg/runtime/generated.proto";
 import "k8s.io/apimachinery/pkg/runtime/schema/generated.proto";
@@ -443,7 +444,7 @@ message ProxySQLModificationRequestStatus {
 }
 
 // +kubebuilder:object:root=true
-// +kubebuilder:resource:path=redismodificationrequests,singular=redismodificationrequest,shortName=rdmodreq,categories={datastore,kubedb,appscode}
+// +kubebuilder:resource:path=redismodificationrequests,singular=redismodificationrequest,shortName=rdmodreq,scope=Cluster,categories={datastore,kubedb,appscode}
 message RedisModificationRequest {
   optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
 
@@ -477,14 +478,22 @@ message RedisModificationRequestList {
   repeated RedisModificationRequest items = 2;
 }
 
-// RedisModificationRequestSpec is the spec for elasticsearch version
+// RedisModificationRequestSpec is the spec for redis version
 message RedisModificationRequestSpec {
+  optional string version = 1;
+
+  optional k8s.io.api.core.v1.ObjectReference redis = 2;
 }
 
-// RedisModificationRequestStatus is the status for elasticsearch version
+// RedisModificationRequestStatus is the status for redis version
 message RedisModificationRequestStatus {
   // Conditions applied to the request, such as approval or denial.
   // +optional
   repeated RedisModificationRequestCondition conditions = 1;
+
+  // observedGeneration is the most recent generation observed for this resource. It corresponds to the
+  // resource's generation, which is updated on mutation by the API Server.
+  // +optional
+  optional int64 observedGeneration = 2;
 }
 
