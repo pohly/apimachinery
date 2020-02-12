@@ -17654,6 +17654,13 @@ func schema_apimachinery_apis_dba_v1alpha1_ElasticsearchModificationRequestStatu
 							Format:      "",
 						},
 					},
+					"reason": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Specifies the reason behind the current status, if any",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
 					"conditions": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Conditions applied to the request, such as approval or denial.",

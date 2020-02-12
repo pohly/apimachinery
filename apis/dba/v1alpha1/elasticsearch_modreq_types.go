@@ -60,13 +60,16 @@ type ElasticsearchModificationRequestStatus struct {
 	// Specifies the current phase of the modification request
 	// +optional
 	Phase ModificationRequestPhase `json:"phase,omitempty" protobuf:"bytes,1,opt,name=phase,casttype=ModificationRequestPhase"`
+	// Specifies the reason behind the current status, if any
+	// +optional
+	Reason string `json:"reason,omitempty" protobuf:"bytes,2,opt,name=reason"`
 	// Conditions applied to the request, such as approval or denial.
 	// +optional
-	Conditions []ElasticsearchModificationRequestCondition `json:"conditions,omitempty" protobuf:"bytes,2,rep,name=conditions"`
+	Conditions []ElasticsearchModificationRequestCondition `json:"conditions,omitempty" protobuf:"bytes,3,rep,name=conditions"`
 	// observedGeneration is the most recent generation observed for this resource. It corresponds to the
 	// resource's generation, which is updated on mutation by the API Server.
 	// +optional
-	ObservedGeneration int64 `json:"observedGeneration,omitempty" protobuf:"varint,3,opt,name=observedGeneration"`
+	ObservedGeneration int64 `json:"observedGeneration,omitempty" protobuf:"varint,4,opt,name=observedGeneration"`
 }
 
 type ElasticsearchModificationRequestCondition struct {

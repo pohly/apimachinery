@@ -124,6 +124,9 @@ spec:
             phase:
               description: Specifies the current phase of the modification request
               type: string
+            reason:
+              description: Specifies the reason behind the current status, if any
+              type: string
           type: object
       type: object
   version: v1alpha1
