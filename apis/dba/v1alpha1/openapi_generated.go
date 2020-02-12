@@ -17647,6 +17647,13 @@ func schema_apimachinery_apis_dba_v1alpha1_ElasticsearchModificationRequestStatu
 				Description: "ElasticsearchModificationRequestStatus is the status for elasticsearch version",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
+					"phase": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Specifies the current phase of the modification request",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
 					"conditions": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Conditions applied to the request, such as approval or denial.",

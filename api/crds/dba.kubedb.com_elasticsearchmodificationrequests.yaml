@@ -121,6 +121,9 @@ spec:
                 is updated on mutation by the API Server.
               format: int64
               type: integer
+            phase:
+              description: Specifies the current phase of the modification request
+              type: string
           type: object
       type: object
   version: v1alpha1

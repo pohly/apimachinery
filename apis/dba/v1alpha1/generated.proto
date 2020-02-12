@@ -78,14 +78,18 @@ message ElasticsearchModificationRequestSpec {
 
 // ElasticsearchModificationRequestStatus is the status for elasticsearch version
 message ElasticsearchModificationRequestStatus {
+  // Specifies the current phase of the modification request
+  // +optional
+  optional string phase = 1;
+
   // Conditions applied to the request, such as approval or denial.
   // +optional
-  repeated ElasticsearchModificationRequestCondition conditions = 1;
+  repeated ElasticsearchModificationRequestCondition conditions = 2;
 
   // observedGeneration is the most recent generation observed for this resource. It corresponds to the
   // resource's generation, which is updated on mutation by the API Server.
   // +optional
-  optional int64 observedGeneration = 2;
+  optional int64 observedGeneration = 3;
 }
 
 // +kubebuilder:object:root=true
