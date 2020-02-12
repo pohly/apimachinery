@@ -23,3 +23,14 @@ const (
 	AccessApproved RequestConditionType = "Approved"
 	AccessDenied   RequestConditionType = "Denied"
 )
+
+type ModificationRequestPhase string
+
+const (
+	// used for modification requests that are currently processing
+	ModificationRequestPhaseProcessing ModificationRequestPhase = "Processing"
+	// used for modification requests that are waiting for approval
+	ModificationRequestPhaseWaitingForApproval ModificationRequestPhase = "WaitingForApproval"
+	// used for modification requests that are failed
+	ModificationRequestPhaseFailed ModificationRequestPhase = "Failed"
+)
