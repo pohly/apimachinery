@@ -29,6 +29,8 @@ type ModificationRequestPhase string
 const (
 	// used for modification requests that are currently processing
 	ModificationRequestPhaseProcessing ModificationRequestPhase = "Processing"
+	// used for modification requests that are executed successfully
+	ModificationRequestPhaseSuccessful ModificationRequestPhase = "Successful"
 	// used for modification requests that are waiting for approval
 	ModificationRequestPhaseWaitingForApproval ModificationRequestPhase = "WaitingForApproval"
 	// used for modification requests that are failed
