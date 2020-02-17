@@ -110,6 +110,10 @@ spec:
                 is updated on mutation by the API Server.
               format: int64
               type: integer
+            phase:
+              type: string
+            reason:
+              type: string
           type: object
       type: object
   version: v1alpha1

@@ -487,13 +487,17 @@ message RedisModificationRequestSpec {
 
 // RedisModificationRequestStatus is the status for redis version
 message RedisModificationRequestStatus {
+  optional string phase = 1;
+
+  optional string reason = 2;
+
   // Conditions applied to the request, such as approval or denial.
   // +optional
-  repeated RedisModificationRequestCondition conditions = 1;
+  repeated RedisModificationRequestCondition conditions = 3;
 
   // observedGeneration is the most recent generation observed for this resource. It corresponds to the
   // resource's generation, which is updated on mutation by the API Server.
   // +optional
-  optional int64 observedGeneration = 2;
+  optional int64 observedGeneration = 4;
 }
 
