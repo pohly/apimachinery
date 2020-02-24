@@ -42,4 +42,8 @@ const (
 	ModificationRequestPhaseWaitingForApproval ModificationRequestPhase = "WaitingForApproval"
 	// used for modification requests that are failed
 	ModificationRequestPhaseFailed ModificationRequestPhase = "Failed"
+	// used for modification requests that are approved
+	ModificationRequestApproved ModificationRequestPhase = "Approved"
+	// used for modification requests that are denied
+	ModificationRequestDenied ModificationRequestPhase = "Denied"
 )
