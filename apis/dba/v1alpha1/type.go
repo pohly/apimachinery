@@ -28,6 +28,7 @@ const (
 	PauseDatabase          RequestConditionType = "PauseDatabase"
 	ResumeDatabase         RequestConditionType = "ResumeDatabase"
 	Successful             RequestConditionType = "Successful"
+	Failed                 RequestConditionType = "Failed"
 	UpgradeDatabaseVersion RequestConditionType = "UpgradeDatabaseVersion"
 )
 
