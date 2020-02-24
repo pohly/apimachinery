@@ -20,8 +20,15 @@ type RequestConditionType string
 
 // These are the possible conditions for a certificate request.
 const (
-	AccessApproved RequestConditionType = "Approved"
-	AccessDenied   RequestConditionType = "Denied"
+	AccessApproved         RequestConditionType = "Approved"
+	AccessDenied           RequestConditionType = "Denied"
+	Processing             RequestConditionType = "Processing"
+	DisableSharding        RequestConditionType = "DisableSharding"
+	EnableSharding         RequestConditionType = "EnableSharding"
+	PauseDatabase          RequestConditionType = "PauseDatabase"
+	ResumeDatabase         RequestConditionType = "ResumeDatabase"
+	Successful             RequestConditionType = "Successful"
+	UpgradeDatabaseVersion RequestConditionType = "UpgradeDatabaseVersion"
 )
 
 type ModificationRequestPhase string
