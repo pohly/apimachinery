@@ -6,6 +6,13 @@ metadata:
     app: kubedb
   name: mongodbmodificationrequests.dba.kubedb.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Status
+    type: string
+  - JSONPath: .metadata.creationTimestamp
+    name: Age
+    type: date
   group: dba.kubedb.com
   names:
     categories:
@@ -20,6 +27,8 @@ spec:
     singular: mongodbmodificationrequest
   preserveUnknownFields: false
   scope: Cluster
+  subresources:
+    status: {}
   validation:
     openAPIV3Schema:
       properties:
@@ -111,6 +120,10 @@ spec:
                 is updated on mutation by the API Server.
               format: int64
               type: integer
+            phase:
+              type: string
+            reason:
+              type: string
           type: object
       type: object
   version: v1alpha1

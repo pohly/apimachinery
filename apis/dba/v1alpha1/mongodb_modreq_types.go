@@ -37,6 +37,9 @@ const (
 
 // +kubebuilder:object:root=true
 // +kubebuilder:resource:path=mongodbmodificationrequests,singular=mongodbmodificationrequest,shortName=mgmodreq,scope=Cluster,categories={datastore,kubedb,appscode}
+// +kubebuilder:subresource:status
+// +kubebuilder:printcolumn:name="Status",type="string",JSONPath=".status.phase"
+// +kubebuilder:printcolumn:name="Age",type="date",JSONPath=".metadata.creationTimestamp"
 type MongoDBModificationRequest struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
 	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
@@ -52,13 +55,15 @@ type MongoDBModificationRequestSpec struct {
 
 // MongoDBModificationRequestStatus is the status for mongodb version
 type MongoDBModificationRequestStatus struct {
+	Phase  ModificationRequestPhase `json:"phase,omitempty" protobuf:"bytes,1,opt,name=phase,casttype=ModificationRequestPhase"`
+	Reason string                   `json:"reason,omitempty" protobuf:"bytes,2,opt,name=reason"`
 	// Conditions applied to the request, such as approval or denial.
 	// +optional
-	Conditions []MongoDBModificationRequestCondition `json:"conditions,omitempty" protobuf:"bytes,1,rep,name=conditions"`
+	Conditions []MongoDBModificationRequestCondition `json:"conditions,omitempty" protobuf:"bytes,3,rep,name=conditions"`
 	// observedGeneration is the most recent generation observed for this resource. It corresponds to the
 	// resource's generation, which is updated on mutation by the API Server.
 	// +optional
-	ObservedGeneration int64 `json:"observedGeneration,omitempty" protobuf:"varint,2,opt,name=observedGeneration"`
+	ObservedGeneration int64 `json:"observedGeneration,omitempty" protobuf:"varint,4,opt,name=observedGeneration"`
 }
 
 type MongoDBModificationRequestCondition struct {

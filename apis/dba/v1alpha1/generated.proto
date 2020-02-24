@@ -169,6 +169,9 @@ message MemcachedModificationRequestStatus {
 
 // +kubebuilder:object:root=true
 // +kubebuilder:resource:path=mongodbmodificationrequests,singular=mongodbmodificationrequest,shortName=mgmodreq,scope=Cluster,categories={datastore,kubedb,appscode}
+// +kubebuilder:subresource:status
+// +kubebuilder:printcolumn:name="Status",type="string",JSONPath=".status.phase"
+// +kubebuilder:printcolumn:name="Age",type="date",JSONPath=".metadata.creationTimestamp"
 message MongoDBModificationRequest {
   optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
 
@@ -211,14 +214,18 @@ message MongoDBModificationRequestSpec {
 
 // MongoDBModificationRequestStatus is the status for mongodb version
 message MongoDBModificationRequestStatus {
+  optional string phase = 1;
+
+  optional string reason = 2;
+
   // Conditions applied to the request, such as approval or denial.
   // +optional
-  repeated MongoDBModificationRequestCondition conditions = 1;
+  repeated MongoDBModificationRequestCondition conditions = 3;
 
   // observedGeneration is the most recent generation observed for this resource. It corresponds to the
   // resource's generation, which is updated on mutation by the API Server.
   // +optional
-  optional int64 observedGeneration = 3;
+  optional int64 observedGeneration = 4;
 }
 
 // +kubebuilder:object:root=true
