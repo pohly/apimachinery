@@ -21,6 +21,7 @@ syntax = 'proto2';
 
 package kubedb.dev.apimachinery.apis.dba.v1alpha1;
 
+import "k8s.io/api/core/v1/generated.proto";
 import "k8s.io/apimachinery/pkg/apis/meta/v1/generated.proto";
 import "k8s.io/apimachinery/pkg/runtime/generated.proto";
 import "k8s.io/apimachinery/pkg/runtime/schema/generated.proto";
@@ -214,6 +215,9 @@ message MongoDBModificationRequestStatus {
 
 // +kubebuilder:object:root=true
 // +kubebuilder:resource:path=mysqlmodificationrequests,singular=mysqlmodificationrequest,shortName=mymodreq,categories={datastore,kubedb,appscode}
+// +kubebuilder:subresource:status
+// +kubebuilder:printcolumn:name="Status",type="string",JSONPath=".status.phase"
+// +kubebuilder:printcolumn:name="Age",type="date",JSONPath=".metadata.creationTimestamp"
 message MySQLModificationRequest {
   optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
 
@@ -247,15 +251,33 @@ message MySQLModificationRequestList {
   repeated MySQLModificationRequest items = 2;
 }
 
-// MySQLModificationRequestSpec is the spec for elasticsearch version
+// MySQLModificationRequestSpec is the spec for MySQLModificationRequest object
 message MySQLModificationRequestSpec {
+  // MySQLVersion object name
+  optional string version = 1;
+
+  // MySQL object reference
+  optional k8s.io.api.core.v1.ObjectReference mysqlRef = 2;
 }
 
-// MySQLModificationRequestStatus is the status for elasticsearch version
+// MySQLModificationRequestStatus is the status for MySQLModificationRequest object
 message MySQLModificationRequestStatus {
+  // Specifies the current phase of the modification request
+  // +optional
+  optional string phase = 1;
+
+  // Specifies the reason behind the current status, if any
+  // +optional
+  optional string reason = 2;
+
   // Conditions applied to the request, such as approval or denial.
   // +optional
-  repeated MySQLModificationRequestCondition conditions = 1;
+  repeated MySQLModificationRequestCondition conditions = 3;
+
+  // observedGeneration is the most recent generation observed for this resource. It corresponds to the
+  // resource's generation, which is updated on mutation by the API Server.
+  // +optional
+  optional int64 observedGeneration = 4;
 }
 
 // +kubebuilder:object:root=true

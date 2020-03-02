@@ -18300,10 +18300,27 @@ func schema_apimachinery_apis_dba_v1alpha1_MySQLModificationRequestSpec(ref comm
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "MySQLModificationRequestSpec is the spec for elasticsearch version",
+				Description: "MySQLModificationRequestSpec is the spec for MySQLModificationRequest object",
 				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"version": {
+						SchemaProps: spec.SchemaProps{
+							Description: "MySQLVersion object name",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"mysqlRef": {
+						SchemaProps: spec.SchemaProps{
+							Description: "MySQL object reference",
+							Ref:         ref("k8s.io/api/core/v1.ObjectReference"),
+						},
+					},
+				},
 			},
 		},
+		Dependencies: []string{
+			"k8s.io/api/core/v1.ObjectReference"},
 	}
 }
 
@@ -18311,9 +18328,23 @@ func schema_apimachinery_apis_dba_v1alpha1_MySQLModificationRequestStatus(ref co
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "MySQLModificationRequestStatus is the status for elasticsearch version",
+				Description: "MySQLModificationRequestStatus is the status for MySQLModificationRequest object",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
+					"phase": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Specifies the current phase of the modification request",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"reason": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Specifies the reason behind the current status, if any",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
 					"conditions": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Conditions applied to the request, such as approval or denial.",
@@ -18325,6 +18356,13 @@ func schema_apimachinery_apis_dba_v1alpha1_MySQLModificationRequestStatus(ref co
 									},
 								},
 							},
+						},
+					},
+					"observedGeneration": {
+						SchemaProps: spec.SchemaProps{
+							Description: "observedGeneration is the most recent generation observed for this resource. It corresponds to the resource's generation, which is updated on mutation by the API Server.",
+							Type:        []string{"integer"},
+							Format:      "int64",
 						},
 					},
 				},

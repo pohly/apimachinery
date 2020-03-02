@@ -95,6 +95,17 @@ func (c *FakeMySQLModificationRequests) Update(mySQLModificationRequest *v1alpha
 	return obj.(*v1alpha1.MySQLModificationRequest), err
 }
 
+// UpdateStatus was generated because the type contains a Status member.
+// Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
+func (c *FakeMySQLModificationRequests) UpdateStatus(mySQLModificationRequest *v1alpha1.MySQLModificationRequest) (*v1alpha1.MySQLModificationRequest, error) {
+	obj, err := c.Fake.
+		Invokes(testing.NewRootUpdateSubresourceAction(mysqlmodificationrequestsResource, "status", mySQLModificationRequest), &v1alpha1.MySQLModificationRequest{})
+	if obj == nil {
+		return nil, err
+	}
+	return obj.(*v1alpha1.MySQLModificationRequest), err
+}
+
 // Delete takes name of the mySQLModificationRequest and deletes it. Returns an error if one occurs.
 func (c *FakeMySQLModificationRequests) Delete(name string, options *v1.DeleteOptions) error {
 	_, err := c.Fake.
