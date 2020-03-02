@@ -40,6 +40,7 @@ type MySQLModificationRequestsGetter interface {
 type MySQLModificationRequestInterface interface {
 	Create(*v1alpha1.MySQLModificationRequest) (*v1alpha1.MySQLModificationRequest, error)
 	Update(*v1alpha1.MySQLModificationRequest) (*v1alpha1.MySQLModificationRequest, error)
+	UpdateStatus(*v1alpha1.MySQLModificationRequest) (*v1alpha1.MySQLModificationRequest, error)
 	Delete(name string, options *v1.DeleteOptions) error
 	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
 	Get(name string, options v1.GetOptions) (*v1alpha1.MySQLModificationRequest, error)
@@ -120,6 +121,21 @@ func (c *mySQLModificationRequests) Update(mySQLModificationRequest *v1alpha1.My
 	err = c.client.Put().
 		Resource("mysqlmodificationrequests").
 		Name(mySQLModificationRequest.Name).
+		Body(mySQLModificationRequest).
+		Do().
+		Into(result)
+	return
+}
+
+// UpdateStatus was generated because the type contains a Status member.
+// Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
+
+func (c *mySQLModificationRequests) UpdateStatus(mySQLModificationRequest *v1alpha1.MySQLModificationRequest) (result *v1alpha1.MySQLModificationRequest, err error) {
+	result = &v1alpha1.MySQLModificationRequest{}
+	err = c.client.Put().
+		Resource("mysqlmodificationrequests").
+		Name(mySQLModificationRequest.Name).
+		SubResource("status").
 		Body(mySQLModificationRequest).
 		Do().
 		Into(result)
