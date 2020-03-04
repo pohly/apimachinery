@@ -32,7 +32,7 @@ import (
 	kutil "kmodules.xyz/client-go"
 )
 
-func CreateOrPatchMySQLModificationRequest(c cs.DbaV1alpha1Interface, meta metav1.ObjectMeta, transform func(request *dba.MySQLModificationRequest) *dba.MySQLModificationRequest) (*dba.MySQLModificationRequest, kutil.VerbType, error) {
+func CreateOrPatchMySQLModificationRequest(c cs.DbaV1alpha1Interface, meta metav1.ObjectMeta, transform func(*dba.MySQLModificationRequest) *dba.MySQLModificationRequest) (*dba.MySQLModificationRequest, kutil.VerbType, error) {
 	cur, err := c.MySQLModificationRequests().Get(meta.Name, metav1.GetOptions{})
 	if kerr.IsNotFound(err) {
 		glog.V(3).Infof("Creating MySQLModificationRequest %s.", meta.Name)

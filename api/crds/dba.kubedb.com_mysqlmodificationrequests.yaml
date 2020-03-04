@@ -26,7 +26,7 @@ spec:
     - mymodreq
     singular: mysqlmodificationrequest
   preserveUnknownFields: false
-  scope: Namespaced
+  scope: Cluster
   subresources:
     status: {}
   validation:
