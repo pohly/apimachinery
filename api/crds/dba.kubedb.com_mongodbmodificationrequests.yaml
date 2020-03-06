@@ -59,6 +59,16 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            scale:
+              description: Specifies the field information that needed to be scaled
+              properties:
+                replicas:
+                  format: int32
+                  type: integer
+                shards:
+                  format: int32
+                  type: integer
+              type: object
             type:
               description: Specifies the modification request type; ScaleUp, ScaleDown,
                 Upgrade etc.

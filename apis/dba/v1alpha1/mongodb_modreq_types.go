@@ -55,6 +55,14 @@ type MongoDBModificationRequestSpec struct {
 	Type ModificationRequestType `json:"type" protobuf:"bytes,2,opt,name=type"`
 	// Specifies the field information that needed to be updated
 	Update *UpdateSpec `json:"update,omitempty" protobuf:"bytes,3,opt,name=update"`
+	// Specifies the field information that needed to be scaled
+	Scale *ScalingSpec `json:"scale,omitempty" protobuf:"bytes,4,opt,name=scale"`
+}
+
+// ScalingSpec is the spec for mongodb scaling
+type ScalingSpec struct {
+	Shards   int32 `json:"shards,omitempty" protobuf:"bytes,1,opt,name=shards"`
+	Replicas int32 `json:"replicas,omitempty" protobuf:"bytes,2,opt,name=replicas"`
 }
 
 type UpdateSpec struct {

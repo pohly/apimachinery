@@ -419,6 +419,7 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"kubedb.dev/apimachinery/apis/dba/v1alpha1.RedisModificationRequestList":              schema_apimachinery_apis_dba_v1alpha1_RedisModificationRequestList(ref),
 		"kubedb.dev/apimachinery/apis/dba/v1alpha1.RedisModificationRequestSpec":              schema_apimachinery_apis_dba_v1alpha1_RedisModificationRequestSpec(ref),
 		"kubedb.dev/apimachinery/apis/dba/v1alpha1.RedisModificationRequestStatus":            schema_apimachinery_apis_dba_v1alpha1_RedisModificationRequestStatus(ref),
+		"kubedb.dev/apimachinery/apis/dba/v1alpha1.ScalingSpec":                               schema_apimachinery_apis_dba_v1alpha1_ScalingSpec(ref),
 		"kubedb.dev/apimachinery/apis/dba/v1alpha1.UpdateSpec":                                schema_apimachinery_apis_dba_v1alpha1_UpdateSpec(ref),
 	}
 }
@@ -18152,12 +18153,18 @@ func schema_apimachinery_apis_dba_v1alpha1_MongoDBModificationRequestSpec(ref co
 							Ref:         ref("kubedb.dev/apimachinery/apis/dba/v1alpha1.UpdateSpec"),
 						},
 					},
+					"scale": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Specifies the field information that needed to be scaled",
+							Ref:         ref("kubedb.dev/apimachinery/apis/dba/v1alpha1.ScalingSpec"),
+						},
+					},
 				},
 				Required: []string{"databaseRef", "type"},
 			},
 		},
 		Dependencies: []string{
-			"k8s.io/api/core/v1.LocalObjectReference", "kubedb.dev/apimachinery/apis/dba/v1alpha1.UpdateSpec"},
+			"k8s.io/api/core/v1.LocalObjectReference", "kubedb.dev/apimachinery/apis/dba/v1alpha1.ScalingSpec", "kubedb.dev/apimachinery/apis/dba/v1alpha1.UpdateSpec"},
 	}
 }
 
@@ -19231,6 +19238,31 @@ func schema_apimachinery_apis_dba_v1alpha1_RedisModificationRequestStatus(ref co
 		},
 		Dependencies: []string{
 			"kubedb.dev/apimachinery/apis/dba/v1alpha1.RedisModificationRequestCondition"},
+	}
+}
+
+func schema_apimachinery_apis_dba_v1alpha1_ScalingSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "ScalingSpec is the spec for mongodb scaling",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"shards": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"replicas": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+				},
+			},
+		},
 	}
 }
 

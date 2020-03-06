@@ -216,6 +216,9 @@ message MongoDBModificationRequestSpec {
 
   // Specifies the field information that needed to be updated
   optional UpdateSpec update = 3;
+
+  // Specifies the field information that needed to be scaled
+  optional ScalingSpec scale = 4;
 }
 
 // MongoDBModificationRequestStatus is the status for mongodb modification request
@@ -508,6 +511,13 @@ message RedisModificationRequestStatus {
   // Conditions applied to the request, such as approval or denial.
   // +optional
   repeated RedisModificationRequestCondition conditions = 1;
+}
+
+// ScalingSpec is the spec for mongodb scaling
+message ScalingSpec {
+  optional int32 shards = 1;
+
+  optional int32 replicas = 2;
 }
 
 message UpdateSpec {
