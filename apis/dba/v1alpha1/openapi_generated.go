@@ -419,6 +419,7 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"kubedb.dev/apimachinery/apis/dba/v1alpha1.RedisModificationRequestList":              schema_apimachinery_apis_dba_v1alpha1_RedisModificationRequestList(ref),
 		"kubedb.dev/apimachinery/apis/dba/v1alpha1.RedisModificationRequestSpec":              schema_apimachinery_apis_dba_v1alpha1_RedisModificationRequestSpec(ref),
 		"kubedb.dev/apimachinery/apis/dba/v1alpha1.RedisModificationRequestStatus":            schema_apimachinery_apis_dba_v1alpha1_RedisModificationRequestStatus(ref),
+		"kubedb.dev/apimachinery/apis/dba/v1alpha1.ScaleSpec":                                 schema_apimachinery_apis_dba_v1alpha1_ScaleSpec(ref),
 	}
 }
 
@@ -17619,6 +17620,12 @@ func schema_apimachinery_apis_dba_v1alpha1_ElasticsearchModificationRequestSpec(
 				Description: "ElasticsearchModificationRequestSpec is the spec for ElasticsearchModificationRequest object",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
+					"elasticsearchRef": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Elasticsearch object reference",
+							Ref:         ref("k8s.io/api/core/v1.ObjectReference"),
+						},
+					},
 					"version": {
 						SchemaProps: spec.SchemaProps{
 							Description: "ElasticsearchVersion object name",
@@ -17626,17 +17633,17 @@ func schema_apimachinery_apis_dba_v1alpha1_ElasticsearchModificationRequestSpec(
 							Format:      "",
 						},
 					},
-					"elasticsearchRef": {
+					"scale": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Elasticsearch object reference",
-							Ref:         ref("k8s.io/api/core/v1.ObjectReference"),
+							Description: "Specifies the scaling info of Elasticsearch Object",
+							Ref:         ref("kubedb.dev/apimachinery/apis/dba/v1alpha1.ScaleSpec"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"k8s.io/api/core/v1.ObjectReference"},
+			"k8s.io/api/core/v1.ObjectReference", "kubedb.dev/apimachinery/apis/dba/v1alpha1.ScaleSpec"},
 	}
 }
 
@@ -19225,5 +19232,39 @@ func schema_apimachinery_apis_dba_v1alpha1_RedisModificationRequestStatus(ref co
 		},
 		Dependencies: []string{
 			"kubedb.dev/apimachinery/apis/dba/v1alpha1.RedisModificationRequestCondition"},
+	}
+}
+
+func schema_apimachinery_apis_dba_v1alpha1_ScaleSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "ScaleSpec contains the scaling information of the Elasticsearch",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"master": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Number of master nodes",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"data": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Number of data nodes",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"client": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Number of client nodes",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+				},
+			},
+		},
 	}
 }

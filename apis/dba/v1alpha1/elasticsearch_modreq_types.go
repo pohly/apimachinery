@@ -49,10 +49,22 @@ type ElasticsearchModificationRequest struct {
 
 // ElasticsearchModificationRequestSpec is the spec for ElasticsearchModificationRequest object
 type ElasticsearchModificationRequestSpec struct {
-	// ElasticsearchVersion object name
-	Version string `json:"version,omitempty" protobuf:"bytes,1,opt,name=version"`
 	// Elasticsearch object reference
-	ElasticsearchRef *v1.ObjectReference `json:"elasticsearchRef,omitempty" protobuf:"bytes,2,opt,name=elasticsearchRef"`
+	ElasticsearchRef *v1.ObjectReference `json:"elasticsearchRef,omitempty" protobuf:"bytes,1,opt,name=elasticsearchRef"`
+	// ElasticsearchVersion object name
+	Version string `json:"version,omitempty" protobuf:"bytes,2,opt,name=version"`
+	//Specifies the scaling info of Elasticsearch Object
+	Scale *ScaleSpec `json:"scale,omitempty" protobuf:"bytes,3,opt,name=scale"`
+}
+
+// ScaleSpec contains the scaling information of the Elasticsearch
+type ScaleSpec struct {
+	// Number of master nodes
+	Master *int32 `json:"master,omitempty" protobuf:"bytes,1,opt,name=master"`
+	// Number of data nodes
+	Data *int32 `json:"data,omitempty" protobuf:"bytes,2,opt,name=data"`
+	// Number of client nodes
+	Client *int32 `json:"client,omitempty" protobuf:"bytes,3,opt,name=client"`
 }
 
 // ElasticsearchModificationRequestStatus is the status for elasticsearch version

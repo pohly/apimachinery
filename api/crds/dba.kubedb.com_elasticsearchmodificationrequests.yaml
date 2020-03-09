@@ -84,6 +84,22 @@ spec:
                   description: 'UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids'
                   type: string
               type: object
+            scale:
+              description: Specifies the scaling info of Elasticsearch Object
+              properties:
+                client:
+                  description: Number of client nodes
+                  format: int32
+                  type: integer
+                data:
+                  description: Number of data nodes
+                  format: int32
+                  type: integer
+                master:
+                  description: Number of master nodes
+                  format: int32
+                  type: integer
+              type: object
             version:
               description: ElasticsearchVersion object name
               type: string

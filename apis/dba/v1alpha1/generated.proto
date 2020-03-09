@@ -69,11 +69,14 @@ message ElasticsearchModificationRequestList {
 
 // ElasticsearchModificationRequestSpec is the spec for ElasticsearchModificationRequest object
 message ElasticsearchModificationRequestSpec {
-  // ElasticsearchVersion object name
-  optional string version = 1;
-
   // Elasticsearch object reference
-  optional k8s.io.api.core.v1.ObjectReference elasticsearchRef = 2;
+  optional k8s.io.api.core.v1.ObjectReference elasticsearchRef = 1;
+
+  // ElasticsearchVersion object name
+  optional string version = 2;
+
+  // Specifies the scaling info of Elasticsearch Object
+  optional ScaleSpec scale = 3;
 }
 
 // ElasticsearchModificationRequestStatus is the status for elasticsearch version
@@ -508,5 +511,17 @@ message RedisModificationRequestStatus {
   // Conditions applied to the request, such as approval or denial.
   // +optional
   repeated RedisModificationRequestCondition conditions = 1;
+}
+
+// ScaleSpec contains the scaling information of the Elasticsearch
+message ScaleSpec {
+  // Number of master nodes
+  optional int32 master = 1;
+
+  // Number of data nodes
+  optional int32 data = 2;
+
+  // Number of client nodes
+  optional int32 client = 3;
 }
 
