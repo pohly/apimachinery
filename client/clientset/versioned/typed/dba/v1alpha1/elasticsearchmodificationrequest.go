@@ -33,7 +33,7 @@ import (
 // ElasticsearchModificationRequestsGetter has a method to return a ElasticsearchModificationRequestInterface.
 // A group's client should implement this interface.
 type ElasticsearchModificationRequestsGetter interface {
-	ElasticsearchModificationRequests() ElasticsearchModificationRequestInterface
+	ElasticsearchModificationRequests(namespace string) ElasticsearchModificationRequestInterface
 }
 
 // ElasticsearchModificationRequestInterface has methods to work with ElasticsearchModificationRequest resources.
@@ -53,12 +53,14 @@ type ElasticsearchModificationRequestInterface interface {
 // elasticsearchModificationRequests implements ElasticsearchModificationRequestInterface
 type elasticsearchModificationRequests struct {
 	client rest.Interface
+	ns     string
 }
 
 // newElasticsearchModificationRequests returns a ElasticsearchModificationRequests
-func newElasticsearchModificationRequests(c *DbaV1alpha1Client) *elasticsearchModificationRequests {
+func newElasticsearchModificationRequests(c *DbaV1alpha1Client, namespace string) *elasticsearchModificationRequests {
 	return &elasticsearchModificationRequests{
 		client: c.RESTClient(),
+		ns:     namespace,
 	}
 }
 
@@ -66,6 +68,7 @@ func newElasticsearchModificationRequests(c *DbaV1alpha1Client) *elasticsearchMo
 func (c *elasticsearchModificationRequests) Get(name string, options v1.GetOptions) (result *v1alpha1.ElasticsearchModificationRequest, err error) {
 	result = &v1alpha1.ElasticsearchModificationRequest{}
 	err = c.client.Get().
+		Namespace(c.ns).
 		Resource("elasticsearchmodificationrequests").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
@@ -82,6 +85,7 @@ func (c *elasticsearchModificationRequests) List(opts v1.ListOptions) (result *v
 	}
 	result = &v1alpha1.ElasticsearchModificationRequestList{}
 	err = c.client.Get().
+		Namespace(c.ns).
 		Resource("elasticsearchmodificationrequests").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
@@ -98,6 +102,7 @@ func (c *elasticsearchModificationRequests) Watch(opts v1.ListOptions) (watch.In
 	}
 	opts.Watch = true
 	return c.client.Get().
+		Namespace(c.ns).
 		Resource("elasticsearchmodificationrequests").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
@@ -108,6 +113,7 @@ func (c *elasticsearchModificationRequests) Watch(opts v1.ListOptions) (watch.In
 func (c *elasticsearchModificationRequests) Create(elasticsearchModificationRequest *v1alpha1.ElasticsearchModificationRequest) (result *v1alpha1.ElasticsearchModificationRequest, err error) {
 	result = &v1alpha1.ElasticsearchModificationRequest{}
 	err = c.client.Post().
+		Namespace(c.ns).
 		Resource("elasticsearchmodificationrequests").
 		Body(elasticsearchModificationRequest).
 		Do().
@@ -119,6 +125,7 @@ func (c *elasticsearchModificationRequests) Create(elasticsearchModificationRequ
 func (c *elasticsearchModificationRequests) Update(elasticsearchModificationRequest *v1alpha1.ElasticsearchModificationRequest) (result *v1alpha1.ElasticsearchModificationRequest, err error) {
 	result = &v1alpha1.ElasticsearchModificationRequest{}
 	err = c.client.Put().
+		Namespace(c.ns).
 		Resource("elasticsearchmodificationrequests").
 		Name(elasticsearchModificationRequest.Name).
 		Body(elasticsearchModificationRequest).
@@ -133,6 +140,7 @@ func (c *elasticsearchModificationRequests) Update(elasticsearchModificationRequ
 func (c *elasticsearchModificationRequests) UpdateStatus(elasticsearchModificationRequest *v1alpha1.ElasticsearchModificationRequest) (result *v1alpha1.ElasticsearchModificationRequest, err error) {
 	result = &v1alpha1.ElasticsearchModificationRequest{}
 	err = c.client.Put().
+		Namespace(c.ns).
 		Resource("elasticsearchmodificationrequests").
 		Name(elasticsearchModificationRequest.Name).
 		SubResource("status").
@@ -145,6 +153,7 @@ func (c *elasticsearchModificationRequests) UpdateStatus(elasticsearchModificati
 // Delete takes name of the elasticsearchModificationRequest and deletes it. Returns an error if one occurs.
 func (c *elasticsearchModificationRequests) Delete(name string, options *v1.DeleteOptions) error {
 	return c.client.Delete().
+		Namespace(c.ns).
 		Resource("elasticsearchmodificationrequests").
 		Name(name).
 		Body(options).
@@ -159,6 +168,7 @@ func (c *elasticsearchModificationRequests) DeleteCollection(options *v1.DeleteO
 		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
+		Namespace(c.ns).
 		Resource("elasticsearchmodificationrequests").
 		VersionedParams(&listOptions, scheme.ParameterCodec).
 		Timeout(timeout).
@@ -171,6 +181,7 @@ func (c *elasticsearchModificationRequests) DeleteCollection(options *v1.DeleteO
 func (c *elasticsearchModificationRequests) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ElasticsearchModificationRequest, err error) {
 	result = &v1alpha1.ElasticsearchModificationRequest{}
 	err = c.client.Patch(pt).
+		Namespace(c.ns).
 		Resource("elasticsearchmodificationrequests").
 		SubResource(subresources...).
 		Name(name).

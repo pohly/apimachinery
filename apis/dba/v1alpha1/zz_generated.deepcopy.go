@@ -108,7 +108,7 @@ func (in *ElasticsearchModificationRequestSpec) DeepCopyInto(out *ElasticsearchM
 	*out = *in
 	if in.ElasticsearchRef != nil {
 		in, out := &in.ElasticsearchRef, &out.ElasticsearchRef
-		*out = new(v1.ObjectReference)
+		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
 	if in.Scale != nil {

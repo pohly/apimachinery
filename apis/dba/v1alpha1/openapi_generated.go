@@ -17623,7 +17623,7 @@ func schema_apimachinery_apis_dba_v1alpha1_ElasticsearchModificationRequestSpec(
 					"elasticsearchRef": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Elasticsearch object reference",
-							Ref:         ref("k8s.io/api/core/v1.ObjectReference"),
+							Ref:         ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
 					},
 					"version": {
@@ -17643,7 +17643,7 @@ func schema_apimachinery_apis_dba_v1alpha1_ElasticsearchModificationRequestSpec(
 			},
 		},
 		Dependencies: []string{
-			"k8s.io/api/core/v1.ObjectReference", "kubedb.dev/apimachinery/apis/dba/v1alpha1.ScaleSpec"},
+			"k8s.io/api/core/v1.LocalObjectReference", "kubedb.dev/apimachinery/apis/dba/v1alpha1.ScaleSpec"},
 	}
 }
 

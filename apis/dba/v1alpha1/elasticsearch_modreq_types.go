@@ -31,12 +31,11 @@ const (
 // ElasticsearchModificationRequest defines a Elasticsearch Modification Request object.
 
 // +genclient
-// +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 // +kubebuilder:object:root=true
-// +kubebuilder:resource:path=elasticsearchmodificationrequests,singular=elasticsearchmodificationrequest,shortName=esmodreq,scope=Cluster,categories={datastore,kubedb,appscode}
+// +kubebuilder:resource:path=elasticsearchmodificationrequests,singular=elasticsearchmodificationrequest,shortName=esmodreq,categories={datastore,kubedb,appscode}
 // +kubebuilder:subresource:status
 // +kubebuilder:printcolumn:name="Status",type="string",JSONPath=".status.phase"
 // +kubebuilder:printcolumn:name="Age",type="date",JSONPath=".metadata.creationTimestamp"
@@ -50,7 +49,7 @@ type ElasticsearchModificationRequest struct {
 // ElasticsearchModificationRequestSpec is the spec for ElasticsearchModificationRequest object
 type ElasticsearchModificationRequestSpec struct {
 	// Elasticsearch object reference
-	ElasticsearchRef *v1.ObjectReference `json:"elasticsearchRef,omitempty" protobuf:"bytes,1,opt,name=elasticsearchRef"`
+	ElasticsearchRef *v1.LocalObjectReference `json:"elasticsearchRef,omitempty" protobuf:"bytes,1,opt,name=elasticsearchRef"`
 	// ElasticsearchVersion object name
 	Version string `json:"version,omitempty" protobuf:"bytes,2,opt,name=version"`
 	//Specifies the scaling info of Elasticsearch Object

@@ -30,7 +30,7 @@ import "k8s.io/apimachinery/pkg/runtime/schema/generated.proto";
 option go_package = "v1alpha1";
 
 // +kubebuilder:object:root=true
-// +kubebuilder:resource:path=elasticsearchmodificationrequests,singular=elasticsearchmodificationrequest,shortName=esmodreq,scope=Cluster,categories={datastore,kubedb,appscode}
+// +kubebuilder:resource:path=elasticsearchmodificationrequests,singular=elasticsearchmodificationrequest,shortName=esmodreq,categories={datastore,kubedb,appscode}
 // +kubebuilder:subresource:status
 // +kubebuilder:printcolumn:name="Status",type="string",JSONPath=".status.phase"
 // +kubebuilder:printcolumn:name="Age",type="date",JSONPath=".metadata.creationTimestamp"
@@ -70,7 +70,7 @@ message ElasticsearchModificationRequestList {
 // ElasticsearchModificationRequestSpec is the spec for ElasticsearchModificationRequest object
 message ElasticsearchModificationRequestSpec {
   // Elasticsearch object reference
-  optional k8s.io.api.core.v1.ObjectReference elasticsearchRef = 1;
+  optional k8s.io.api.core.v1.LocalObjectReference elasticsearchRef = 1;
 
   // ElasticsearchVersion object name
   optional string version = 2;
