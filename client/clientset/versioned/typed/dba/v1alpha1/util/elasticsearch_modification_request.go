@@ -35,7 +35,7 @@ import (
 func CreateOrPatchElasticsearchModificationRequest(c cs.DbaV1alpha1Interface, meta metav1.ObjectMeta, transform func(*dba.ElasticsearchModificationRequest) *dba.ElasticsearchModificationRequest) (*dba.ElasticsearchModificationRequest, kutil.VerbType, error) {
 	cur, err := c.ElasticsearchModificationRequests(meta.Namespace).Get(meta.Name, metav1.GetOptions{})
 	if kerr.IsNotFound(err) {
-		glog.V(3).Infof("Creating ElasticsearchModificationRequest %s.", meta.Name)
+		glog.V(3).Infof("Creating ElasticsearchModificationRequest %s/%s.", meta.Namespace, meta.Name)
 		out, err := c.ElasticsearchModificationRequests(meta.Namespace).Create(transform(&dba.ElasticsearchModificationRequest{
 			TypeMeta: metav1.TypeMeta{
 				Kind:       "ElasticsearchModificationRequest",
@@ -72,7 +72,7 @@ func PatchElasticsearchModificationRequestObject(c cs.DbaV1alpha1Interface, cur,
 	if len(patch) == 0 || string(patch) == "{}" {
 		return cur, kutil.VerbUnchanged, nil
 	}
-	glog.V(3).Infof("Patching ElasticsearchModificationRequest %s with %s.", cur.Name, string(patch))
+	glog.V(3).Infof("Patching ElasticsearchModificationRequest %s/%s with %s.", cur.Namespace, cur.Name, string(patch))
 	out, err := c.ElasticsearchModificationRequests(cur.Namespace).Patch(cur.Name, types.MergePatchType, patch)
 	return out, kutil.VerbPatched, err
 }
@@ -85,15 +85,15 @@ func TryUpdateElasticsearchModificationRequest(c cs.DbaV1alpha1Interface, meta m
 		if kerr.IsNotFound(e2) {
 			return false, e2
 		} else if e2 == nil {
-			result, e2 = c.ElasticsearchModificationRequests(meta.Namespace).Update(transform(cur.DeepCopy()))
+			result, e2 = c.ElasticsearchModificationRequests(cur.Namespace).Update(transform(cur.DeepCopy()))
 			return e2 == nil, nil
 		}
-		glog.Errorf("Attempt %d failed to update ElasticsearchModificationRequest %s due to %v.", attempt, cur.Name, e2)
+		glog.Errorf("Attempt %d failed to update ElasticsearchModificationRequest %s/%s due to %v.", attempt, cur.Namespace, cur.Name, e2)
 		return false, nil
 	})
 
 	if err != nil {
-		err = fmt.Errorf("failed to update ElasticsearchModificationRequest %s after %d attempts due to %v", meta.Name, attempt, err)
+		err = fmt.Errorf("failed to update ElasticsearchModificationRequest %s/%s after %d attempts due to %v", meta.Namespace, meta.Name, attempt, err)
 	}
 	return
 }
