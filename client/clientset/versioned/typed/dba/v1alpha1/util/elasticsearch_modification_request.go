@@ -33,10 +33,10 @@ import (
 )
 
 func CreateOrPatchElasticsearchModificationRequest(c cs.DbaV1alpha1Interface, meta metav1.ObjectMeta, transform func(*dba.ElasticsearchModificationRequest) *dba.ElasticsearchModificationRequest) (*dba.ElasticsearchModificationRequest, kutil.VerbType, error) {
-	cur, err := c.ElasticsearchModificationRequests().Get(meta.Name, metav1.GetOptions{})
+	cur, err := c.ElasticsearchModificationRequests(meta.Namespace).Get(meta.Name, metav1.GetOptions{})
 	if kerr.IsNotFound(err) {
 		glog.V(3).Infof("Creating ElasticsearchModificationRequest %s.", meta.Name)
-		out, err := c.ElasticsearchModificationRequests().Create(transform(&dba.ElasticsearchModificationRequest{
+		out, err := c.ElasticsearchModificationRequests(meta.Namespace).Create(transform(&dba.ElasticsearchModificationRequest{
 			TypeMeta: metav1.TypeMeta{
 				Kind:       "ElasticsearchModificationRequest",
 				APIVersion: dba.SchemeGroupVersion.String(),
@@ -73,7 +73,7 @@ func PatchElasticsearchModificationRequestObject(c cs.DbaV1alpha1Interface, cur,
 		return cur, kutil.VerbUnchanged, nil
 	}
 	glog.V(3).Infof("Patching ElasticsearchModificationRequest %s with %s.", cur.Name, string(patch))
-	out, err := c.ElasticsearchModificationRequests().Patch(cur.Name, types.MergePatchType, patch)
+	out, err := c.ElasticsearchModificationRequests(cur.Namespace).Patch(cur.Name, types.MergePatchType, patch)
 	return out, kutil.VerbPatched, err
 }
 
@@ -81,11 +81,11 @@ func TryUpdateElasticsearchModificationRequest(c cs.DbaV1alpha1Interface, meta m
 	attempt := 0
 	err = wait.PollImmediate(kutil.RetryInterval, kutil.RetryTimeout, func() (bool, error) {
 		attempt++
-		cur, e2 := c.ElasticsearchModificationRequests().Get(meta.Name, metav1.GetOptions{})
+		cur, e2 := c.ElasticsearchModificationRequests(meta.Namespace).Get(meta.Name, metav1.GetOptions{})
 		if kerr.IsNotFound(e2) {
 			return false, e2
 		} else if e2 == nil {
-			result, e2 = c.ElasticsearchModificationRequests().Update(transform(cur.DeepCopy()))
+			result, e2 = c.ElasticsearchModificationRequests(meta.Namespace).Update(transform(cur.DeepCopy()))
 			return e2 == nil, nil
 		}
 		glog.Errorf("Attempt %d failed to update ElasticsearchModificationRequest %s due to %v.", attempt, cur.Name, e2)
@@ -117,9 +117,9 @@ func UpdateElasticsearchModificationRequestStatus(
 	err = wait.PollImmediate(kutil.RetryInterval, kutil.RetryTimeout, func() (bool, error) {
 		attempt++
 		var e2 error
-		result, e2 = c.ElasticsearchModificationRequests().UpdateStatus(apply(cur))
+		result, e2 = c.ElasticsearchModificationRequests(in.Namespace).UpdateStatus(apply(cur))
 		if kerr.IsConflict(e2) {
-			latest, e3 := c.ElasticsearchModificationRequests().Get(in.Name, metav1.GetOptions{})
+			latest, e3 := c.ElasticsearchModificationRequests(in.Namespace).Get(in.Name, metav1.GetOptions{})
 			switch {
 			case e3 == nil:
 				cur = latest
