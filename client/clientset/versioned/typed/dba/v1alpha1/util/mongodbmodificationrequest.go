@@ -33,10 +33,10 @@ import (
 )
 
 func CreateOrPatchMongoDBModificationRequest(c cs.DbaV1alpha1Interface, meta metav1.ObjectMeta, transform func(*api.MongoDBModificationRequest) *api.MongoDBModificationRequest) (*api.MongoDBModificationRequest, kutil.VerbType, error) {
-	cur, err := c.MongoDBModificationRequests().Get(meta.Name, metav1.GetOptions{})
+	cur, err := c.MongoDBModificationRequests(meta.Namespace).Get(meta.Name, metav1.GetOptions{})
 	if kerr.IsNotFound(err) {
 		glog.V(3).Infof("Creating MongoDBModificationRequest %s/%s.", meta.Namespace, meta.Name)
-		out, err := c.MongoDBModificationRequests().Create(transform(&api.MongoDBModificationRequest{
+		out, err := c.MongoDBModificationRequests(meta.Namespace).Create(transform(&api.MongoDBModificationRequest{
 			TypeMeta: metav1.TypeMeta{
 				Kind:       "MongoDBModificationRequest",
 				APIVersion: api.SchemeGroupVersion.String(),
@@ -73,7 +73,7 @@ func PatchMongoDBModificationRequestObject(c cs.DbaV1alpha1Interface, cur, mod *
 		return cur, kutil.VerbUnchanged, nil
 	}
 	glog.V(3).Infof("Patching MongoDBModificationRequest %s/%s with %s.", cur.Namespace, cur.Name, string(patch))
-	out, err := c.MongoDBModificationRequests().Patch(cur.Name, types.MergePatchType, patch)
+	out, err := c.MongoDBModificationRequests(cur.Namespace).Patch(cur.Name, types.MergePatchType, patch)
 	return out, kutil.VerbPatched, err
 }
 
@@ -81,12 +81,12 @@ func TryUpdateMongoDBModificationRequest(c cs.DbaV1alpha1Interface, meta metav1.
 	attempt := 0
 	err = wait.PollImmediate(kutil.RetryInterval, kutil.RetryTimeout, func() (bool, error) {
 		attempt++
-		cur, e2 := c.MongoDBModificationRequests().Get(meta.Name, metav1.GetOptions{})
+		cur, e2 := c.MongoDBModificationRequests(meta.Namespace).Get(meta.Name, metav1.GetOptions{})
 		if kerr.IsNotFound(e2) {
 			return false, e2
 		} else if e2 == nil {
 
-			result, e2 = c.MongoDBModificationRequests().Update(transform(cur.DeepCopy()))
+			result, e2 = c.MongoDBModificationRequests(meta.Namespace).Update(transform(cur.DeepCopy()))
 			return e2 == nil, nil
 		}
 		glog.Errorf("Attempt %d failed to update MongoDBModificationRequest %s/%s due to %v.", attempt, cur.Namespace, cur.Name, e2)
@@ -118,9 +118,9 @@ func UpdateMongoDBModificationRequestStatus(
 	err = wait.PollImmediate(kutil.RetryInterval, kutil.RetryTimeout, func() (bool, error) {
 		attempt++
 		var e2 error
-		result, e2 = c.MongoDBModificationRequests().UpdateStatus(apply(cur))
+		result, e2 = c.MongoDBModificationRequests(cur.Namespace).UpdateStatus(apply(cur))
 		if kerr.IsConflict(e2) {
-			latest, e3 := c.MongoDBModificationRequests().Get(in.Name, metav1.GetOptions{})
+			latest, e3 := c.MongoDBModificationRequests(cur.Namespace).Get(in.Name, metav1.GetOptions{})
 			switch {
 			case e3 == nil:
 				cur = latest

@@ -31,13 +31,13 @@ const (
 // MongoDBModificationRequest defines a MongoDB database version.
 
 // +genclient
-// +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 // +kubebuilder:object:root=true
-// +kubebuilder:resource:path=mongodbmodificationrequests,singular=mongodbmodificationrequest,shortName=mgmodreq,scope=Cluster,categories={datastore,kubedb,appscode}
+// +kubebuilder:resource:path=mongodbmodificationrequests,singular=mongodbmodificationrequest,shortName=mgmodreq,categories={datastore,kubedb,appscode}
 // +kubebuilder:subresource:status
+// +kubebuilder:printcolumn:name="Type",type="string",JSONPath=".spec.type"
 // +kubebuilder:printcolumn:name="Status",type="string",JSONPath=".status.phase"
 // +kubebuilder:printcolumn:name="Age",type="date",JSONPath=".metadata.creationTimestamp"
 type MongoDBModificationRequest struct {
@@ -47,13 +47,22 @@ type MongoDBModificationRequest struct {
 	Status            MongoDBModificationRequestStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
 }
 
-// MongoDBModificationRequestSpec is the spec for mongodb version
+// MongoDBModificationRequestSpec is the spec for mongodb modification request
 type MongoDBModificationRequestSpec struct {
-	Version string              `json:"version,omitempty" protobuf:"bytes,1,opt,name=version"`
-	MongoDB *v1.ObjectReference `json:"mongodb,omitempty" protobuf:"bytes,2,opt,name=mongoDB"`
+	// Specifies the Elasticsearch reference
+	DatabaseRef v1.LocalObjectReference `json:"databaseRef" protobuf:"bytes,1,opt,name=databaseRef"`
+	// Specifies the modification request type; ScaleUp, ScaleDown, Upgrade etc.
+	Type ModificationRequestType `json:"type" protobuf:"bytes,2,opt,name=type"`
+	// Specifies the field information that needed to be updated
+	Update *UpdateSpec `json:"update,omitempty" protobuf:"bytes,3,opt,name=update"`
 }
 
-// MongoDBModificationRequestStatus is the status for mongodb version
+type UpdateSpec struct {
+	// Specifies the ElasticsearchVersion object name
+	TargetVersion string `json:"targetVersion,omitempty" protobuf:"bytes,1,opt,name=targetVersion"`
+}
+
+// MongoDBModificationRequestStatus is the status for mongodb modification request
 type MongoDBModificationRequestStatus struct {
 	Phase  ModificationRequestPhase `json:"phase,omitempty" protobuf:"bytes,1,opt,name=phase,casttype=ModificationRequestPhase"`
 	Reason string                   `json:"reason,omitempty" protobuf:"bytes,2,opt,name=reason"`
