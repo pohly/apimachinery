@@ -214,7 +214,7 @@ message MongoDBModificationRequestStatus {
 }
 
 // +kubebuilder:object:root=true
-// +kubebuilder:resource:path=mysqlmodificationrequests,singular=mysqlmodificationrequest,shortName=mymodreq,scope=Cluster,categories={datastore,kubedb,appscode}
+// +kubebuilder:resource:path=mysqlmodificationrequests,singular=mysqlmodificationrequest,shortName=mymodreq,categories={datastore,kubedb,appscode}
 // +kubebuilder:subresource:status
 // +kubebuilder:printcolumn:name="Status",type="string",JSONPath=".status.phase"
 // +kubebuilder:printcolumn:name="Age",type="date",JSONPath=".metadata.creationTimestamp"
@@ -251,13 +251,19 @@ message MySQLModificationRequestList {
   repeated MySQLModificationRequest items = 2;
 }
 
-// MySQLModificationRequestSpec is the spec for MySQLModificationRequest object
+// MySQLModificationRequestSpec is the spec for MySQLModificationRequest version
 message MySQLModificationRequestSpec {
-  // MySQLVersion object name
-  optional string version = 1;
+  // Specifies the database reference
+  optional k8s.io.api.core.v1.LocalObjectReference databaseRef = 1;
 
-  // MySQL object reference
-  optional k8s.io.api.core.v1.ObjectReference mysqlRef = 2;
+  // Specifies the modification request type; ScaleUp, ScaleDown, Upgrade etc.
+  optional string type = 2;
+
+  // Specifies the field information that needed to be updated
+  optional UpdateSpec update = 3;
+
+  // Specifies the scaling info of database
+  optional ScaleSpec scale = 4;
 }
 
 // MySQLModificationRequestStatus is the status for MySQLModificationRequest object
@@ -508,5 +514,22 @@ message RedisModificationRequestStatus {
   // Conditions applied to the request, such as approval or denial.
   // +optional
   repeated RedisModificationRequestCondition conditions = 1;
+}
+
+// ScaleSpec contains the scaling information of the Elasticsearch
+message ScaleSpec {
+  // Number of master nodes
+  optional int32 master = 1;
+
+  // Number of data nodes
+  optional int32 data = 2;
+
+  // Number of client nodes
+  optional int32 client = 3;
+}
+
+message UpdateSpec {
+  // Specifies the ElasticsearchVersion object name
+  optional string targetVersion = 1;
 }
 

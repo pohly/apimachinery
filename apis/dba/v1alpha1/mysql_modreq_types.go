@@ -31,12 +31,11 @@ const (
 // MySQLModificationRequest defines a MySQL Modification Request object.
 
 // +genclient
-// +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 // +kubebuilder:object:root=true
-// +kubebuilder:resource:path=mysqlmodificationrequests,singular=mysqlmodificationrequest,shortName=mymodreq,scope=Cluster,categories={datastore,kubedb,appscode}
+// +kubebuilder:resource:path=mysqlmodificationrequests,singular=mysqlmodificationrequest,shortName=mymodreq,categories={datastore,kubedb,appscode}
 // +kubebuilder:subresource:status
 // +kubebuilder:printcolumn:name="Status",type="string",JSONPath=".status.phase"
 // +kubebuilder:printcolumn:name="Age",type="date",JSONPath=".metadata.creationTimestamp"
@@ -47,12 +46,31 @@ type MySQLModificationRequest struct {
 	Status            MySQLModificationRequestStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
 }
 
-// MySQLModificationRequestSpec is the spec for MySQLModificationRequest object
+// MySQLModificationRequestSpec is the spec for MySQLModificationRequest version
 type MySQLModificationRequestSpec struct {
-	// MySQLVersion object name
-	Version string `json:"version,omitempty" protobuf:"bytes,1,opt,name=version"`
-	// MySQL object reference
-	MySQLRef *v1.ObjectReference `json:"mysqlRef,omitempty" protobuf:"bytes,2,opt,name=mysqlRef"`
+	// Specifies the database reference
+	DatabaseRef v1.LocalObjectReference `json:"databaseRef" protobuf:"bytes,1,opt,name=databaseRef"`
+	// Specifies the modification request type; ScaleUp, ScaleDown, Upgrade etc.
+	Type ModificationRequestType `json:"type" protobuf:"bytes,2,opt,name=type"`
+	// Specifies the field information that needed to be updated
+	Update *UpdateSpec `json:"update,omitempty" protobuf:"bytes,3,opt,name=update"`
+	//Specifies the scaling info of database
+	Scale *ScaleSpec `json:"scale,omitempty" protobuf:"bytes,4,opt,name=scale"`
+}
+
+type UpdateSpec struct {
+	// Specifies the ElasticsearchVersion object name
+	TargetVersion string `json:"targetVersion,omitempty" protobuf:"bytes,1,opt,name=targetVersion"`
+}
+
+// ScaleSpec contains the scaling information of the Elasticsearch
+type ScaleSpec struct {
+	// Number of master nodes
+	Master *int32 `json:"master,omitempty" protobuf:"bytes,1,opt,name=master"`
+	// Number of data nodes
+	Data *int32 `json:"data,omitempty" protobuf:"bytes,2,opt,name=data"`
+	// Number of client nodes
+	Client *int32 `json:"client,omitempty" protobuf:"bytes,3,opt,name=client"`
 }
 
 // MySQLModificationRequestStatus is the status for MySQLModificationRequest object

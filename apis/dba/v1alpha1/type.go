@@ -46,3 +46,16 @@ const (
 	// used for modification requests that are denied
 	ModificationRequestDenied ModificationRequestPhase = "Denied"
 )
+
+type ModificationRequestType string
+
+const (
+	// used for ScaleUp operation
+	ModificationRequestTypeScaleUp ModificationRequestType = "ScaleUp"
+	// used for ScaleDown operation
+	ModificationRequestTypeScaleDown ModificationRequestType = "ScaleDown"
+	// used for Upgrade operation
+	ModificationRequestTypeUpgrade ModificationRequestType = "Upgrade"
+	// used for Downgrade operation
+	ModificationRequestTypeDowngrade ModificationRequestType = "Downgrade"
+)

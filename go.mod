@@ -3,7 +3,7 @@ module kubedb.dev/apimachinery
 go 1.12
 
 require (
-	github.com/appscode/docker-registry-client v0.0.0-20180426150142-1bb02bb202b0
+	github.com/appscode/docker-registry-client v0.0.0-20180426150142-1bb02bb202b0 // indirect
 	github.com/appscode/go v0.0.0-20191119085241-0887d8ec2ecc
 	github.com/docker/libtrust v0.0.0-20160708172513-aabc10ec26b7 // indirect
 	github.com/evanphx/json-patch v4.5.0+incompatible

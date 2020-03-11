@@ -419,6 +419,8 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"kubedb.dev/apimachinery/apis/dba/v1alpha1.RedisModificationRequestList":              schema_apimachinery_apis_dba_v1alpha1_RedisModificationRequestList(ref),
 		"kubedb.dev/apimachinery/apis/dba/v1alpha1.RedisModificationRequestSpec":              schema_apimachinery_apis_dba_v1alpha1_RedisModificationRequestSpec(ref),
 		"kubedb.dev/apimachinery/apis/dba/v1alpha1.RedisModificationRequestStatus":            schema_apimachinery_apis_dba_v1alpha1_RedisModificationRequestStatus(ref),
+		"kubedb.dev/apimachinery/apis/dba/v1alpha1.ScaleSpec":                                 schema_apimachinery_apis_dba_v1alpha1_ScaleSpec(ref),
+		"kubedb.dev/apimachinery/apis/dba/v1alpha1.UpdateSpec":                                schema_apimachinery_apis_dba_v1alpha1_UpdateSpec(ref),
 	}
 }
 
@@ -18300,27 +18302,40 @@ func schema_apimachinery_apis_dba_v1alpha1_MySQLModificationRequestSpec(ref comm
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "MySQLModificationRequestSpec is the spec for MySQLModificationRequest object",
+				Description: "MySQLModificationRequestSpec is the spec for MySQLModificationRequest version",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
-					"version": {
+					"databaseRef": {
 						SchemaProps: spec.SchemaProps{
-							Description: "MySQLVersion object name",
+							Description: "Specifies the database reference",
+							Ref:         ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
+					"type": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Specifies the modification request type; ScaleUp, ScaleDown, Upgrade etc.",
 							Type:        []string{"string"},
 							Format:      "",
 						},
 					},
-					"mysqlRef": {
+					"update": {
 						SchemaProps: spec.SchemaProps{
-							Description: "MySQL object reference",
-							Ref:         ref("k8s.io/api/core/v1.ObjectReference"),
+							Description: "Specifies the field information that needed to be updated",
+							Ref:         ref("kubedb.dev/apimachinery/apis/dba/v1alpha1.UpdateSpec"),
+						},
+					},
+					"scale": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Specifies the scaling info of database",
+							Ref:         ref("kubedb.dev/apimachinery/apis/dba/v1alpha1.ScaleSpec"),
 						},
 					},
 				},
+				Required: []string{"databaseRef", "type"},
 			},
 		},
 		Dependencies: []string{
-			"k8s.io/api/core/v1.ObjectReference"},
+			"k8s.io/api/core/v1.LocalObjectReference", "kubedb.dev/apimachinery/apis/dba/v1alpha1.ScaleSpec", "kubedb.dev/apimachinery/apis/dba/v1alpha1.UpdateSpec"},
 	}
 }
 
@@ -19225,5 +19240,58 @@ func schema_apimachinery_apis_dba_v1alpha1_RedisModificationRequestStatus(ref co
 		},
 		Dependencies: []string{
 			"kubedb.dev/apimachinery/apis/dba/v1alpha1.RedisModificationRequestCondition"},
+	}
+}
+
+func schema_apimachinery_apis_dba_v1alpha1_ScaleSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "ScaleSpec contains the scaling information of the Elasticsearch",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"master": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Number of master nodes",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"data": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Number of data nodes",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"client": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Number of client nodes",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+				},
+			},
+		},
+	}
+}
+
+func schema_apimachinery_apis_dba_v1alpha1_UpdateSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"targetVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Specifies the ElasticsearchVersion object name",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+				},
+			},
+		},
 	}
 }
