@@ -7,6 +7,9 @@ metadata:
   name: elasticsearchmodificationrequests.dba.kubedb.com
 spec:
   additionalPrinterColumns:
+  - JSONPath: .spec.type
+    name: Type
+    type: string
   - JSONPath: .status.phase
     name: Status
     type: string
