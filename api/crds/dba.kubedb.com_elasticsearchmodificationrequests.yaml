@@ -48,8 +48,8 @@ spec:
           description: ElasticsearchModificationRequestSpec is the spec for ElasticsearchModificationRequest
             object
           properties:
-            elasticsearchRef:
-              description: Elasticsearch object reference
+            databaseRef:
+              description: Specifies the Elasticsearch reference
               properties:
                 name:
                   description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
@@ -72,9 +72,20 @@ spec:
                   format: int32
                   type: integer
               type: object
-            version:
-              description: ElasticsearchVersion object name
+            type:
+              description: Specifies the modification request type; ScaleUp, ScaleDown,
+                Upgrade etc.
               type: string
+            update:
+              description: Specifies the field information that needed to be updated
+              properties:
+                targetVersion:
+                  description: Specifies the ElasticsearchVersion object name
+                  type: string
+              type: object
+          required:
+          - databaseRef
+          - type
           type: object
         status:
           description: ElasticsearchModificationRequestStatus is the status for elasticsearch

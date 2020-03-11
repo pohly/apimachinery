@@ -69,14 +69,17 @@ message ElasticsearchModificationRequestList {
 
 // ElasticsearchModificationRequestSpec is the spec for ElasticsearchModificationRequest object
 message ElasticsearchModificationRequestSpec {
-  // Elasticsearch object reference
-  optional k8s.io.api.core.v1.LocalObjectReference elasticsearchRef = 1;
+  // Specifies the Elasticsearch reference
+  optional k8s.io.api.core.v1.LocalObjectReference databaseRef = 1;
 
-  // ElasticsearchVersion object name
-  optional string version = 2;
+  // Specifies the modification request type; ScaleUp, ScaleDown, Upgrade etc.
+  optional string type = 2;
+
+  // Specifies the field information that needed to be updated
+  optional UpdateSpec update = 3;
 
   // Specifies the scaling info of Elasticsearch Object
-  optional ScaleSpec scale = 3;
+  optional ScaleSpec scale = 4;
 }
 
 // ElasticsearchModificationRequestStatus is the status for elasticsearch version
@@ -523,5 +526,10 @@ message ScaleSpec {
 
   // Number of client nodes
   optional int32 client = 3;
+}
+
+message UpdateSpec {
+  // Specifies the ElasticsearchVersion object name
+  optional string targetVersion = 1;
 }
 

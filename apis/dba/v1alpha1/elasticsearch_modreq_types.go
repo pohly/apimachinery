@@ -48,12 +48,19 @@ type ElasticsearchModificationRequest struct {
 
 // ElasticsearchModificationRequestSpec is the spec for ElasticsearchModificationRequest object
 type ElasticsearchModificationRequestSpec struct {
-	// Elasticsearch object reference
-	ElasticsearchRef *v1.LocalObjectReference `json:"elasticsearchRef,omitempty" protobuf:"bytes,1,opt,name=elasticsearchRef"`
-	// ElasticsearchVersion object name
-	Version string `json:"version,omitempty" protobuf:"bytes,2,opt,name=version"`
+	// Specifies the Elasticsearch reference
+	DatabaseRef v1.LocalObjectReference `json:"databaseRef" protobuf:"bytes,1,opt,name=databaseRef"`
+	// Specifies the modification request type; ScaleUp, ScaleDown, Upgrade etc.
+	Type ModificationRequestType `json:"type" protobuf:"bytes,2,opt,name=type"`
+	// Specifies the field information that needed to be updated
+	Update *UpdateSpec `json:"update,omitempty" protobuf:"bytes,3,opt,name=update"`
 	//Specifies the scaling info of Elasticsearch Object
-	Scale *ScaleSpec `json:"scale,omitempty" protobuf:"bytes,3,opt,name=scale"`
+	Scale *ScaleSpec `json:"scale,omitempty" protobuf:"bytes,4,opt,name=scale"`
+}
+
+type UpdateSpec struct {
+	// Specifies the ElasticsearchVersion object name
+	TargetVersion string `json:"targetVersion,omitempty" protobuf:"bytes,1,opt,name=targetVersion"`
 }
 
 // ScaleSpec contains the scaling information of the Elasticsearch
