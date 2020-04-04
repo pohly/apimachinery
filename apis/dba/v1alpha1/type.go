@@ -30,6 +30,9 @@ const (
 	Successful             RequestConditionType = "Successful"
 	Failed                 RequestConditionType = "Failed"
 	UpgradeDatabaseVersion RequestConditionType = "UpgradeDatabaseVersion"
+	ScalingUp              RequestConditionType = "ScalingUp"
+	ScalingDown            RequestConditionType = "ScalingDown"
+	NodeRestarted          RequestConditionType = "NodeRestarted"
 )
 
 type ModificationRequestPhase string
