@@ -33,6 +33,7 @@ const (
 	ScalingUp              RequestConditionType = "ScalingUp"
 	ScalingDown            RequestConditionType = "ScalingDown"
 	NodeRestarted          RequestConditionType = "NodeRestarted"
+	NodeDeleted            RequestConditionType = "NodeDeleted"
 )
 
 type ModificationRequestPhase string
