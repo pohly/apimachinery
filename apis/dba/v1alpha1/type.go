@@ -34,6 +34,7 @@ const (
 	ScalingDown            RequestConditionType = "ScalingDown"
 	NodeRestarted          RequestConditionType = "NodeRestarted"
 	NodeDeleted            RequestConditionType = "NodeDeleted"
+	NodeCreated            RequestConditionType = "NodeCreated"
 	MigratingData          RequestConditionType = "MigratingData"
 )
 
