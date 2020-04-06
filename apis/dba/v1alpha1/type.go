@@ -34,6 +34,7 @@ const (
 	ScalingDown            RequestConditionType = "ScalingDown"
 	NodeRestarted          RequestConditionType = "NodeRestarted"
 	NodeDeleted            RequestConditionType = "NodeDeleted"
+	MigratingData          RequestConditionType = "MigratingData"
 )
 
 type ModificationRequestPhase string
