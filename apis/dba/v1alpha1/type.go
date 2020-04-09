@@ -36,6 +36,8 @@ const (
 	NodeDeleted            RequestConditionType = "NodeDeleted"
 	NodeCreated            RequestConditionType = "NodeCreated"
 	MigratingData          RequestConditionType = "MigratingData"
+	VotingExclusionAdded   RequestConditionType = "VotingExclusionAdded"
+	VotingExclusionDeleted RequestConditionType = "VotingExclusionDeleted"
 )
 
 type ModificationRequestPhase string
