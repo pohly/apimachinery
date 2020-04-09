@@ -48,6 +48,10 @@ spec:
           description: MySQLModificationRequestSpec is the spec for MySQLModificationRequest
             version
           properties:
+            curStsSuffix:
+              description: Specifies the current suffix of the StatefulSet
+              format: int32
+              type: integer
             databaseRef:
               description: Specifies the database reference
               properties:

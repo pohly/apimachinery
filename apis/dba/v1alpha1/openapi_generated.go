@@ -18330,6 +18330,13 @@ func schema_apimachinery_apis_dba_v1alpha1_MySQLModificationRequestSpec(ref comm
 							Ref:         ref("kubedb.dev/apimachinery/apis/dba/v1alpha1.ScaleSpec"),
 						},
 					},
+					"curStsSuffix": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Specifies the current suffix of the StatefulSet",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
 				},
 				Required: []string{"databaseRef", "type"},
 			},

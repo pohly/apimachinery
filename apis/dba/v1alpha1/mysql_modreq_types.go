@@ -56,6 +56,8 @@ type MySQLModificationRequestSpec struct {
 	Update *UpdateSpec `json:"update,omitempty" protobuf:"bytes,3,opt,name=update"`
 	//Specifies the scaling info of database
 	Scale *ScaleSpec `json:"scale,omitempty" protobuf:"bytes,4,opt,name=scale"`
+	//Specifies the current suffix of the StatefulSet
+	CurStsSuffix int32 `json:"curStsSuffix,omitempty" protobuf:"varint,5,opt,name=curStsSuffix"`
 }
 
 type UpdateSpec struct {

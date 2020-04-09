@@ -264,6 +264,9 @@ message MySQLModificationRequestSpec {
 
   // Specifies the scaling info of database
   optional ScaleSpec scale = 4;
+
+  // Specifies the current suffix of the StatefulSet
+  optional int32 curStsSuffix = 5;
 }
 
 // MySQLModificationRequestStatus is the status for MySQLModificationRequest object
