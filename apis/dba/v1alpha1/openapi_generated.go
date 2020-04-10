@@ -369,6 +369,7 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"kmodules.xyz/offshoot-api/api/v1.ServicePort":                                        schema_kmodulesxyz_offshoot_api_api_v1_ServicePort(ref),
 		"kmodules.xyz/offshoot-api/api/v1.ServiceSpec":                                        schema_kmodulesxyz_offshoot_api_api_v1_ServiceSpec(ref),
 		"kmodules.xyz/offshoot-api/api/v1.ServiceTemplateSpec":                                schema_kmodulesxyz_offshoot_api_api_v1_ServiceTemplateSpec(ref),
+		"kubedb.dev/apimachinery/apis/dba/v1alpha1.ConfigNode":                                schema_apimachinery_apis_dba_v1alpha1_ConfigNode(ref),
 		"kubedb.dev/apimachinery/apis/dba/v1alpha1.ElasticsearchModificationRequest":          schema_apimachinery_apis_dba_v1alpha1_ElasticsearchModificationRequest(ref),
 		"kubedb.dev/apimachinery/apis/dba/v1alpha1.ElasticsearchModificationRequestCondition": schema_apimachinery_apis_dba_v1alpha1_ElasticsearchModificationRequestCondition(ref),
 		"kubedb.dev/apimachinery/apis/dba/v1alpha1.ElasticsearchModificationRequestList":      schema_apimachinery_apis_dba_v1alpha1_ElasticsearchModificationRequestList(ref),
@@ -389,6 +390,7 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"kubedb.dev/apimachinery/apis/dba/v1alpha1.MongoDBModificationRequestList":            schema_apimachinery_apis_dba_v1alpha1_MongoDBModificationRequestList(ref),
 		"kubedb.dev/apimachinery/apis/dba/v1alpha1.MongoDBModificationRequestSpec":            schema_apimachinery_apis_dba_v1alpha1_MongoDBModificationRequestSpec(ref),
 		"kubedb.dev/apimachinery/apis/dba/v1alpha1.MongoDBModificationRequestStatus":          schema_apimachinery_apis_dba_v1alpha1_MongoDBModificationRequestStatus(ref),
+		"kubedb.dev/apimachinery/apis/dba/v1alpha1.MongosNode":                                schema_apimachinery_apis_dba_v1alpha1_MongosNode(ref),
 		"kubedb.dev/apimachinery/apis/dba/v1alpha1.MySQLModificationRequest":                  schema_apimachinery_apis_dba_v1alpha1_MySQLModificationRequest(ref),
 		"kubedb.dev/apimachinery/apis/dba/v1alpha1.MySQLModificationRequestCondition":         schema_apimachinery_apis_dba_v1alpha1_MySQLModificationRequestCondition(ref),
 		"kubedb.dev/apimachinery/apis/dba/v1alpha1.MySQLModificationRequestList":              schema_apimachinery_apis_dba_v1alpha1_MySQLModificationRequestList(ref),
@@ -420,6 +422,7 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"kubedb.dev/apimachinery/apis/dba/v1alpha1.RedisModificationRequestSpec":              schema_apimachinery_apis_dba_v1alpha1_RedisModificationRequestSpec(ref),
 		"kubedb.dev/apimachinery/apis/dba/v1alpha1.RedisModificationRequestStatus":            schema_apimachinery_apis_dba_v1alpha1_RedisModificationRequestStatus(ref),
 		"kubedb.dev/apimachinery/apis/dba/v1alpha1.ScalingSpec":                               schema_apimachinery_apis_dba_v1alpha1_ScalingSpec(ref),
+		"kubedb.dev/apimachinery/apis/dba/v1alpha1.ShardNode":                                 schema_apimachinery_apis_dba_v1alpha1_ShardNode(ref),
 		"kubedb.dev/apimachinery/apis/dba/v1alpha1.UpdateSpec":                                schema_apimachinery_apis_dba_v1alpha1_UpdateSpec(ref),
 	}
 }
@@ -17482,6 +17485,25 @@ func schema_kmodulesxyz_offshoot_api_api_v1_ServiceTemplateSpec(ref common.Refer
 	}
 }
 
+func schema_apimachinery_apis_dba_v1alpha1_ConfigNode(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "ConfigNode is the spec for mongodb ConfigServer",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"replicas": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+				},
+			},
+		},
+	}
+}
+
 func schema_apimachinery_apis_dba_v1alpha1_ElasticsearchModificationRequest(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
@@ -18212,6 +18234,25 @@ func schema_apimachinery_apis_dba_v1alpha1_MongoDBModificationRequestStatus(ref 
 		},
 		Dependencies: []string{
 			"kubedb.dev/apimachinery/apis/dba/v1alpha1.MongoDBModificationRequestCondition"},
+	}
+}
+
+func schema_apimachinery_apis_dba_v1alpha1_MongosNode(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "MongosNode is the spec for mongodb Mongos",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"replicas": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+				},
+			},
+		},
 	}
 }
 
@@ -19246,6 +19287,36 @@ func schema_apimachinery_apis_dba_v1alpha1_ScalingSpec(ref common.ReferenceCallb
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
 				Description: "ScalingSpec is the spec for mongodb scaling",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"shard": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubedb.dev/apimachinery/apis/dba/v1alpha1.ShardNode"),
+						},
+					},
+					"configServer": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubedb.dev/apimachinery/apis/dba/v1alpha1.ConfigNode"),
+						},
+					},
+					"mongos": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubedb.dev/apimachinery/apis/dba/v1alpha1.MongosNode"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"kubedb.dev/apimachinery/apis/dba/v1alpha1.ConfigNode", "kubedb.dev/apimachinery/apis/dba/v1alpha1.MongosNode", "kubedb.dev/apimachinery/apis/dba/v1alpha1.ShardNode"},
+	}
+}
+
+func schema_apimachinery_apis_dba_v1alpha1_ShardNode(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "ShardNode is the spec for mongodb Shard",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"shards": {

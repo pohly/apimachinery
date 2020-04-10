@@ -41,10 +41,38 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.GoGoProtoPackageIsVersion2 // please upgrade the proto package
 
+func (m *ConfigNode) Reset()      { *m = ConfigNode{} }
+func (*ConfigNode) ProtoMessage() {}
+func (*ConfigNode) Descriptor() ([]byte, []int) {
+	return fileDescriptor_b5a799bc54483634, []int{0}
+}
+func (m *ConfigNode) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *ConfigNode) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	b = b[:cap(b)]
+	n, err := m.MarshalToSizedBuffer(b)
+	if err != nil {
+		return nil, err
+	}
+	return b[:n], nil
+}
+func (m *ConfigNode) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ConfigNode.Merge(m, src)
+}
+func (m *ConfigNode) XXX_Size() int {
+	return m.Size()
+}
+func (m *ConfigNode) XXX_DiscardUnknown() {
+	xxx_messageInfo_ConfigNode.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ConfigNode proto.InternalMessageInfo
+
 func (m *ElasticsearchModificationRequest) Reset()      { *m = ElasticsearchModificationRequest{} }
 func (*ElasticsearchModificationRequest) ProtoMessage() {}
 func (*ElasticsearchModificationRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{0}
+	return fileDescriptor_b5a799bc54483634, []int{1}
 }
 func (m *ElasticsearchModificationRequest) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -74,7 +102,7 @@ func (m *ElasticsearchModificationRequestCondition) Reset() {
 }
 func (*ElasticsearchModificationRequestCondition) ProtoMessage() {}
 func (*ElasticsearchModificationRequestCondition) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{1}
+	return fileDescriptor_b5a799bc54483634, []int{2}
 }
 func (m *ElasticsearchModificationRequestCondition) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -102,7 +130,7 @@ var xxx_messageInfo_ElasticsearchModificationRequestCondition proto.InternalMess
 func (m *ElasticsearchModificationRequestList) Reset()      { *m = ElasticsearchModificationRequestList{} }
 func (*ElasticsearchModificationRequestList) ProtoMessage() {}
 func (*ElasticsearchModificationRequestList) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{2}
+	return fileDescriptor_b5a799bc54483634, []int{3}
 }
 func (m *ElasticsearchModificationRequestList) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -130,7 +158,7 @@ var xxx_messageInfo_ElasticsearchModificationRequestList proto.InternalMessageIn
 func (m *ElasticsearchModificationRequestSpec) Reset()      { *m = ElasticsearchModificationRequestSpec{} }
 func (*ElasticsearchModificationRequestSpec) ProtoMessage() {}
 func (*ElasticsearchModificationRequestSpec) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{3}
+	return fileDescriptor_b5a799bc54483634, []int{4}
 }
 func (m *ElasticsearchModificationRequestSpec) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -160,7 +188,7 @@ func (m *ElasticsearchModificationRequestStatus) Reset() {
 }
 func (*ElasticsearchModificationRequestStatus) ProtoMessage() {}
 func (*ElasticsearchModificationRequestStatus) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{4}
+	return fileDescriptor_b5a799bc54483634, []int{5}
 }
 func (m *ElasticsearchModificationRequestStatus) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -188,7 +216,7 @@ var xxx_messageInfo_ElasticsearchModificationRequestStatus proto.InternalMessage
 func (m *EtcdModificationRequest) Reset()      { *m = EtcdModificationRequest{} }
 func (*EtcdModificationRequest) ProtoMessage() {}
 func (*EtcdModificationRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{5}
+	return fileDescriptor_b5a799bc54483634, []int{6}
 }
 func (m *EtcdModificationRequest) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -216,7 +244,7 @@ var xxx_messageInfo_EtcdModificationRequest proto.InternalMessageInfo
 func (m *EtcdModificationRequestCondition) Reset()      { *m = EtcdModificationRequestCondition{} }
 func (*EtcdModificationRequestCondition) ProtoMessage() {}
 func (*EtcdModificationRequestCondition) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{6}
+	return fileDescriptor_b5a799bc54483634, []int{7}
 }
 func (m *EtcdModificationRequestCondition) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -244,7 +272,7 @@ var xxx_messageInfo_EtcdModificationRequestCondition proto.InternalMessageInfo
 func (m *EtcdModificationRequestList) Reset()      { *m = EtcdModificationRequestList{} }
 func (*EtcdModificationRequestList) ProtoMessage() {}
 func (*EtcdModificationRequestList) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{7}
+	return fileDescriptor_b5a799bc54483634, []int{8}
 }
 func (m *EtcdModificationRequestList) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -272,7 +300,7 @@ var xxx_messageInfo_EtcdModificationRequestList proto.InternalMessageInfo
 func (m *EtcdModificationRequestSpec) Reset()      { *m = EtcdModificationRequestSpec{} }
 func (*EtcdModificationRequestSpec) ProtoMessage() {}
 func (*EtcdModificationRequestSpec) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{8}
+	return fileDescriptor_b5a799bc54483634, []int{9}
 }
 func (m *EtcdModificationRequestSpec) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -300,7 +328,7 @@ var xxx_messageInfo_EtcdModificationRequestSpec proto.InternalMessageInfo
 func (m *EtcdModificationRequestStatus) Reset()      { *m = EtcdModificationRequestStatus{} }
 func (*EtcdModificationRequestStatus) ProtoMessage() {}
 func (*EtcdModificationRequestStatus) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{9}
+	return fileDescriptor_b5a799bc54483634, []int{10}
 }
 func (m *EtcdModificationRequestStatus) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -328,7 +356,7 @@ var xxx_messageInfo_EtcdModificationRequestStatus proto.InternalMessageInfo
 func (m *MemcachedModificationRequest) Reset()      { *m = MemcachedModificationRequest{} }
 func (*MemcachedModificationRequest) ProtoMessage() {}
 func (*MemcachedModificationRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{10}
+	return fileDescriptor_b5a799bc54483634, []int{11}
 }
 func (m *MemcachedModificationRequest) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -356,7 +384,7 @@ var xxx_messageInfo_MemcachedModificationRequest proto.InternalMessageInfo
 func (m *MemcachedModificationRequestCondition) Reset()      { *m = MemcachedModificationRequestCondition{} }
 func (*MemcachedModificationRequestCondition) ProtoMessage() {}
 func (*MemcachedModificationRequestCondition) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{11}
+	return fileDescriptor_b5a799bc54483634, []int{12}
 }
 func (m *MemcachedModificationRequestCondition) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -384,7 +412,7 @@ var xxx_messageInfo_MemcachedModificationRequestCondition proto.InternalMessageI
 func (m *MemcachedModificationRequestList) Reset()      { *m = MemcachedModificationRequestList{} }
 func (*MemcachedModificationRequestList) ProtoMessage() {}
 func (*MemcachedModificationRequestList) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{12}
+	return fileDescriptor_b5a799bc54483634, []int{13}
 }
 func (m *MemcachedModificationRequestList) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -412,7 +440,7 @@ var xxx_messageInfo_MemcachedModificationRequestList proto.InternalMessageInfo
 func (m *MemcachedModificationRequestSpec) Reset()      { *m = MemcachedModificationRequestSpec{} }
 func (*MemcachedModificationRequestSpec) ProtoMessage() {}
 func (*MemcachedModificationRequestSpec) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{13}
+	return fileDescriptor_b5a799bc54483634, []int{14}
 }
 func (m *MemcachedModificationRequestSpec) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -440,7 +468,7 @@ var xxx_messageInfo_MemcachedModificationRequestSpec proto.InternalMessageInfo
 func (m *MemcachedModificationRequestStatus) Reset()      { *m = MemcachedModificationRequestStatus{} }
 func (*MemcachedModificationRequestStatus) ProtoMessage() {}
 func (*MemcachedModificationRequestStatus) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{14}
+	return fileDescriptor_b5a799bc54483634, []int{15}
 }
 func (m *MemcachedModificationRequestStatus) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -468,7 +496,7 @@ var xxx_messageInfo_MemcachedModificationRequestStatus proto.InternalMessageInfo
 func (m *MongoDBModificationRequest) Reset()      { *m = MongoDBModificationRequest{} }
 func (*MongoDBModificationRequest) ProtoMessage() {}
 func (*MongoDBModificationRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{15}
+	return fileDescriptor_b5a799bc54483634, []int{16}
 }
 func (m *MongoDBModificationRequest) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -496,7 +524,7 @@ var xxx_messageInfo_MongoDBModificationRequest proto.InternalMessageInfo
 func (m *MongoDBModificationRequestCondition) Reset()      { *m = MongoDBModificationRequestCondition{} }
 func (*MongoDBModificationRequestCondition) ProtoMessage() {}
 func (*MongoDBModificationRequestCondition) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{16}
+	return fileDescriptor_b5a799bc54483634, []int{17}
 }
 func (m *MongoDBModificationRequestCondition) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -524,7 +552,7 @@ var xxx_messageInfo_MongoDBModificationRequestCondition proto.InternalMessageInf
 func (m *MongoDBModificationRequestList) Reset()      { *m = MongoDBModificationRequestList{} }
 func (*MongoDBModificationRequestList) ProtoMessage() {}
 func (*MongoDBModificationRequestList) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{17}
+	return fileDescriptor_b5a799bc54483634, []int{18}
 }
 func (m *MongoDBModificationRequestList) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -552,7 +580,7 @@ var xxx_messageInfo_MongoDBModificationRequestList proto.InternalMessageInfo
 func (m *MongoDBModificationRequestSpec) Reset()      { *m = MongoDBModificationRequestSpec{} }
 func (*MongoDBModificationRequestSpec) ProtoMessage() {}
 func (*MongoDBModificationRequestSpec) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{18}
+	return fileDescriptor_b5a799bc54483634, []int{19}
 }
 func (m *MongoDBModificationRequestSpec) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -580,7 +608,7 @@ var xxx_messageInfo_MongoDBModificationRequestSpec proto.InternalMessageInfo
 func (m *MongoDBModificationRequestStatus) Reset()      { *m = MongoDBModificationRequestStatus{} }
 func (*MongoDBModificationRequestStatus) ProtoMessage() {}
 func (*MongoDBModificationRequestStatus) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{19}
+	return fileDescriptor_b5a799bc54483634, []int{20}
 }
 func (m *MongoDBModificationRequestStatus) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -605,10 +633,38 @@ func (m *MongoDBModificationRequestStatus) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_MongoDBModificationRequestStatus proto.InternalMessageInfo
 
+func (m *MongosNode) Reset()      { *m = MongosNode{} }
+func (*MongosNode) ProtoMessage() {}
+func (*MongosNode) Descriptor() ([]byte, []int) {
+	return fileDescriptor_b5a799bc54483634, []int{21}
+}
+func (m *MongosNode) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MongosNode) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	b = b[:cap(b)]
+	n, err := m.MarshalToSizedBuffer(b)
+	if err != nil {
+		return nil, err
+	}
+	return b[:n], nil
+}
+func (m *MongosNode) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MongosNode.Merge(m, src)
+}
+func (m *MongosNode) XXX_Size() int {
+	return m.Size()
+}
+func (m *MongosNode) XXX_DiscardUnknown() {
+	xxx_messageInfo_MongosNode.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MongosNode proto.InternalMessageInfo
+
 func (m *MySQLModificationRequest) Reset()      { *m = MySQLModificationRequest{} }
 func (*MySQLModificationRequest) ProtoMessage() {}
 func (*MySQLModificationRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{20}
+	return fileDescriptor_b5a799bc54483634, []int{22}
 }
 func (m *MySQLModificationRequest) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -636,7 +692,7 @@ var xxx_messageInfo_MySQLModificationRequest proto.InternalMessageInfo
 func (m *MySQLModificationRequestCondition) Reset()      { *m = MySQLModificationRequestCondition{} }
 func (*MySQLModificationRequestCondition) ProtoMessage() {}
 func (*MySQLModificationRequestCondition) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{21}
+	return fileDescriptor_b5a799bc54483634, []int{23}
 }
 func (m *MySQLModificationRequestCondition) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -664,7 +720,7 @@ var xxx_messageInfo_MySQLModificationRequestCondition proto.InternalMessageInfo
 func (m *MySQLModificationRequestList) Reset()      { *m = MySQLModificationRequestList{} }
 func (*MySQLModificationRequestList) ProtoMessage() {}
 func (*MySQLModificationRequestList) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{22}
+	return fileDescriptor_b5a799bc54483634, []int{24}
 }
 func (m *MySQLModificationRequestList) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -692,7 +748,7 @@ var xxx_messageInfo_MySQLModificationRequestList proto.InternalMessageInfo
 func (m *MySQLModificationRequestSpec) Reset()      { *m = MySQLModificationRequestSpec{} }
 func (*MySQLModificationRequestSpec) ProtoMessage() {}
 func (*MySQLModificationRequestSpec) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{23}
+	return fileDescriptor_b5a799bc54483634, []int{25}
 }
 func (m *MySQLModificationRequestSpec) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -720,7 +776,7 @@ var xxx_messageInfo_MySQLModificationRequestSpec proto.InternalMessageInfo
 func (m *MySQLModificationRequestStatus) Reset()      { *m = MySQLModificationRequestStatus{} }
 func (*MySQLModificationRequestStatus) ProtoMessage() {}
 func (*MySQLModificationRequestStatus) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{24}
+	return fileDescriptor_b5a799bc54483634, []int{26}
 }
 func (m *MySQLModificationRequestStatus) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -748,7 +804,7 @@ var xxx_messageInfo_MySQLModificationRequestStatus proto.InternalMessageInfo
 func (m *PerconaXtraDBModificationRequest) Reset()      { *m = PerconaXtraDBModificationRequest{} }
 func (*PerconaXtraDBModificationRequest) ProtoMessage() {}
 func (*PerconaXtraDBModificationRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{25}
+	return fileDescriptor_b5a799bc54483634, []int{27}
 }
 func (m *PerconaXtraDBModificationRequest) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -778,7 +834,7 @@ func (m *PerconaXtraDBModificationRequestCondition) Reset() {
 }
 func (*PerconaXtraDBModificationRequestCondition) ProtoMessage() {}
 func (*PerconaXtraDBModificationRequestCondition) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{26}
+	return fileDescriptor_b5a799bc54483634, []int{28}
 }
 func (m *PerconaXtraDBModificationRequestCondition) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -806,7 +862,7 @@ var xxx_messageInfo_PerconaXtraDBModificationRequestCondition proto.InternalMess
 func (m *PerconaXtraDBModificationRequestList) Reset()      { *m = PerconaXtraDBModificationRequestList{} }
 func (*PerconaXtraDBModificationRequestList) ProtoMessage() {}
 func (*PerconaXtraDBModificationRequestList) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{27}
+	return fileDescriptor_b5a799bc54483634, []int{29}
 }
 func (m *PerconaXtraDBModificationRequestList) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -834,7 +890,7 @@ var xxx_messageInfo_PerconaXtraDBModificationRequestList proto.InternalMessageIn
 func (m *PerconaXtraDBModificationRequestSpec) Reset()      { *m = PerconaXtraDBModificationRequestSpec{} }
 func (*PerconaXtraDBModificationRequestSpec) ProtoMessage() {}
 func (*PerconaXtraDBModificationRequestSpec) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{28}
+	return fileDescriptor_b5a799bc54483634, []int{30}
 }
 func (m *PerconaXtraDBModificationRequestSpec) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -864,7 +920,7 @@ func (m *PerconaXtraDBModificationRequestStatus) Reset() {
 }
 func (*PerconaXtraDBModificationRequestStatus) ProtoMessage() {}
 func (*PerconaXtraDBModificationRequestStatus) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{29}
+	return fileDescriptor_b5a799bc54483634, []int{31}
 }
 func (m *PerconaXtraDBModificationRequestStatus) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -892,7 +948,7 @@ var xxx_messageInfo_PerconaXtraDBModificationRequestStatus proto.InternalMessage
 func (m *PgBouncerModificationRequest) Reset()      { *m = PgBouncerModificationRequest{} }
 func (*PgBouncerModificationRequest) ProtoMessage() {}
 func (*PgBouncerModificationRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{30}
+	return fileDescriptor_b5a799bc54483634, []int{32}
 }
 func (m *PgBouncerModificationRequest) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -920,7 +976,7 @@ var xxx_messageInfo_PgBouncerModificationRequest proto.InternalMessageInfo
 func (m *PgBouncerModificationRequestCondition) Reset()      { *m = PgBouncerModificationRequestCondition{} }
 func (*PgBouncerModificationRequestCondition) ProtoMessage() {}
 func (*PgBouncerModificationRequestCondition) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{31}
+	return fileDescriptor_b5a799bc54483634, []int{33}
 }
 func (m *PgBouncerModificationRequestCondition) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -948,7 +1004,7 @@ var xxx_messageInfo_PgBouncerModificationRequestCondition proto.InternalMessageI
 func (m *PgBouncerModificationRequestList) Reset()      { *m = PgBouncerModificationRequestList{} }
 func (*PgBouncerModificationRequestList) ProtoMessage() {}
 func (*PgBouncerModificationRequestList) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{32}
+	return fileDescriptor_b5a799bc54483634, []int{34}
 }
 func (m *PgBouncerModificationRequestList) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -976,7 +1032,7 @@ var xxx_messageInfo_PgBouncerModificationRequestList proto.InternalMessageInfo
 func (m *PgBouncerModificationRequestSpec) Reset()      { *m = PgBouncerModificationRequestSpec{} }
 func (*PgBouncerModificationRequestSpec) ProtoMessage() {}
 func (*PgBouncerModificationRequestSpec) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{33}
+	return fileDescriptor_b5a799bc54483634, []int{35}
 }
 func (m *PgBouncerModificationRequestSpec) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -1004,7 +1060,7 @@ var xxx_messageInfo_PgBouncerModificationRequestSpec proto.InternalMessageInfo
 func (m *PgBouncerModificationRequestStatus) Reset()      { *m = PgBouncerModificationRequestStatus{} }
 func (*PgBouncerModificationRequestStatus) ProtoMessage() {}
 func (*PgBouncerModificationRequestStatus) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{34}
+	return fileDescriptor_b5a799bc54483634, []int{36}
 }
 func (m *PgBouncerModificationRequestStatus) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -1032,7 +1088,7 @@ var xxx_messageInfo_PgBouncerModificationRequestStatus proto.InternalMessageInfo
 func (m *PostgresModificationRequest) Reset()      { *m = PostgresModificationRequest{} }
 func (*PostgresModificationRequest) ProtoMessage() {}
 func (*PostgresModificationRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{35}
+	return fileDescriptor_b5a799bc54483634, []int{37}
 }
 func (m *PostgresModificationRequest) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -1060,7 +1116,7 @@ var xxx_messageInfo_PostgresModificationRequest proto.InternalMessageInfo
 func (m *PostgresModificationRequestCondition) Reset()      { *m = PostgresModificationRequestCondition{} }
 func (*PostgresModificationRequestCondition) ProtoMessage() {}
 func (*PostgresModificationRequestCondition) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{36}
+	return fileDescriptor_b5a799bc54483634, []int{38}
 }
 func (m *PostgresModificationRequestCondition) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -1088,7 +1144,7 @@ var xxx_messageInfo_PostgresModificationRequestCondition proto.InternalMessageIn
 func (m *PostgresModificationRequestList) Reset()      { *m = PostgresModificationRequestList{} }
 func (*PostgresModificationRequestList) ProtoMessage() {}
 func (*PostgresModificationRequestList) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{37}
+	return fileDescriptor_b5a799bc54483634, []int{39}
 }
 func (m *PostgresModificationRequestList) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -1116,7 +1172,7 @@ var xxx_messageInfo_PostgresModificationRequestList proto.InternalMessageInfo
 func (m *PostgresModificationRequestSpec) Reset()      { *m = PostgresModificationRequestSpec{} }
 func (*PostgresModificationRequestSpec) ProtoMessage() {}
 func (*PostgresModificationRequestSpec) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{38}
+	return fileDescriptor_b5a799bc54483634, []int{40}
 }
 func (m *PostgresModificationRequestSpec) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -1144,7 +1200,7 @@ var xxx_messageInfo_PostgresModificationRequestSpec proto.InternalMessageInfo
 func (m *PostgresModificationRequestStatus) Reset()      { *m = PostgresModificationRequestStatus{} }
 func (*PostgresModificationRequestStatus) ProtoMessage() {}
 func (*PostgresModificationRequestStatus) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{39}
+	return fileDescriptor_b5a799bc54483634, []int{41}
 }
 func (m *PostgresModificationRequestStatus) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -1172,7 +1228,7 @@ var xxx_messageInfo_PostgresModificationRequestStatus proto.InternalMessageInfo
 func (m *ProxySQLModificationRequest) Reset()      { *m = ProxySQLModificationRequest{} }
 func (*ProxySQLModificationRequest) ProtoMessage() {}
 func (*ProxySQLModificationRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{40}
+	return fileDescriptor_b5a799bc54483634, []int{42}
 }
 func (m *ProxySQLModificationRequest) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -1200,7 +1256,7 @@ var xxx_messageInfo_ProxySQLModificationRequest proto.InternalMessageInfo
 func (m *ProxySQLModificationRequestCondition) Reset()      { *m = ProxySQLModificationRequestCondition{} }
 func (*ProxySQLModificationRequestCondition) ProtoMessage() {}
 func (*ProxySQLModificationRequestCondition) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{41}
+	return fileDescriptor_b5a799bc54483634, []int{43}
 }
 func (m *ProxySQLModificationRequestCondition) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -1228,7 +1284,7 @@ var xxx_messageInfo_ProxySQLModificationRequestCondition proto.InternalMessageIn
 func (m *ProxySQLModificationRequestList) Reset()      { *m = ProxySQLModificationRequestList{} }
 func (*ProxySQLModificationRequestList) ProtoMessage() {}
 func (*ProxySQLModificationRequestList) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{42}
+	return fileDescriptor_b5a799bc54483634, []int{44}
 }
 func (m *ProxySQLModificationRequestList) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -1256,7 +1312,7 @@ var xxx_messageInfo_ProxySQLModificationRequestList proto.InternalMessageInfo
 func (m *ProxySQLModificationRequestSpec) Reset()      { *m = ProxySQLModificationRequestSpec{} }
 func (*ProxySQLModificationRequestSpec) ProtoMessage() {}
 func (*ProxySQLModificationRequestSpec) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{43}
+	return fileDescriptor_b5a799bc54483634, []int{45}
 }
 func (m *ProxySQLModificationRequestSpec) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -1284,7 +1340,7 @@ var xxx_messageInfo_ProxySQLModificationRequestSpec proto.InternalMessageInfo
 func (m *ProxySQLModificationRequestStatus) Reset()      { *m = ProxySQLModificationRequestStatus{} }
 func (*ProxySQLModificationRequestStatus) ProtoMessage() {}
 func (*ProxySQLModificationRequestStatus) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{44}
+	return fileDescriptor_b5a799bc54483634, []int{46}
 }
 func (m *ProxySQLModificationRequestStatus) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -1312,7 +1368,7 @@ var xxx_messageInfo_ProxySQLModificationRequestStatus proto.InternalMessageInfo
 func (m *RedisModificationRequest) Reset()      { *m = RedisModificationRequest{} }
 func (*RedisModificationRequest) ProtoMessage() {}
 func (*RedisModificationRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{45}
+	return fileDescriptor_b5a799bc54483634, []int{47}
 }
 func (m *RedisModificationRequest) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -1340,7 +1396,7 @@ var xxx_messageInfo_RedisModificationRequest proto.InternalMessageInfo
 func (m *RedisModificationRequestCondition) Reset()      { *m = RedisModificationRequestCondition{} }
 func (*RedisModificationRequestCondition) ProtoMessage() {}
 func (*RedisModificationRequestCondition) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{46}
+	return fileDescriptor_b5a799bc54483634, []int{48}
 }
 func (m *RedisModificationRequestCondition) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -1368,7 +1424,7 @@ var xxx_messageInfo_RedisModificationRequestCondition proto.InternalMessageInfo
 func (m *RedisModificationRequestList) Reset()      { *m = RedisModificationRequestList{} }
 func (*RedisModificationRequestList) ProtoMessage() {}
 func (*RedisModificationRequestList) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{47}
+	return fileDescriptor_b5a799bc54483634, []int{49}
 }
 func (m *RedisModificationRequestList) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -1396,7 +1452,7 @@ var xxx_messageInfo_RedisModificationRequestList proto.InternalMessageInfo
 func (m *RedisModificationRequestSpec) Reset()      { *m = RedisModificationRequestSpec{} }
 func (*RedisModificationRequestSpec) ProtoMessage() {}
 func (*RedisModificationRequestSpec) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{48}
+	return fileDescriptor_b5a799bc54483634, []int{50}
 }
 func (m *RedisModificationRequestSpec) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -1424,7 +1480,7 @@ var xxx_messageInfo_RedisModificationRequestSpec proto.InternalMessageInfo
 func (m *RedisModificationRequestStatus) Reset()      { *m = RedisModificationRequestStatus{} }
 func (*RedisModificationRequestStatus) ProtoMessage() {}
 func (*RedisModificationRequestStatus) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{49}
+	return fileDescriptor_b5a799bc54483634, []int{51}
 }
 func (m *RedisModificationRequestStatus) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -1452,7 +1508,7 @@ var xxx_messageInfo_RedisModificationRequestStatus proto.InternalMessageInfo
 func (m *ScalingSpec) Reset()      { *m = ScalingSpec{} }
 func (*ScalingSpec) ProtoMessage() {}
 func (*ScalingSpec) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{50}
+	return fileDescriptor_b5a799bc54483634, []int{52}
 }
 func (m *ScalingSpec) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -1477,10 +1533,38 @@ func (m *ScalingSpec) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ScalingSpec proto.InternalMessageInfo
 
+func (m *ShardNode) Reset()      { *m = ShardNode{} }
+func (*ShardNode) ProtoMessage() {}
+func (*ShardNode) Descriptor() ([]byte, []int) {
+	return fileDescriptor_b5a799bc54483634, []int{53}
+}
+func (m *ShardNode) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *ShardNode) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	b = b[:cap(b)]
+	n, err := m.MarshalToSizedBuffer(b)
+	if err != nil {
+		return nil, err
+	}
+	return b[:n], nil
+}
+func (m *ShardNode) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ShardNode.Merge(m, src)
+}
+func (m *ShardNode) XXX_Size() int {
+	return m.Size()
+}
+func (m *ShardNode) XXX_DiscardUnknown() {
+	xxx_messageInfo_ShardNode.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ShardNode proto.InternalMessageInfo
+
 func (m *UpdateSpec) Reset()      { *m = UpdateSpec{} }
 func (*UpdateSpec) ProtoMessage() {}
 func (*UpdateSpec) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5a799bc54483634, []int{51}
+	return fileDescriptor_b5a799bc54483634, []int{54}
 }
 func (m *UpdateSpec) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -1506,6 +1590,7 @@ func (m *UpdateSpec) XXX_DiscardUnknown() {
 var xxx_messageInfo_UpdateSpec proto.InternalMessageInfo
 
 func init() {
+	proto.RegisterType((*ConfigNode)(nil), "kubedb.dev.apimachinery.apis.dba.v1alpha1.ConfigNode")
 	proto.RegisterType((*ElasticsearchModificationRequest)(nil), "kubedb.dev.apimachinery.apis.dba.v1alpha1.ElasticsearchModificationRequest")
 	proto.RegisterType((*ElasticsearchModificationRequestCondition)(nil), "kubedb.dev.apimachinery.apis.dba.v1alpha1.ElasticsearchModificationRequestCondition")
 	proto.RegisterType((*ElasticsearchModificationRequestList)(nil), "kubedb.dev.apimachinery.apis.dba.v1alpha1.ElasticsearchModificationRequestList")
@@ -1526,6 +1611,7 @@ func init() {
 	proto.RegisterType((*MongoDBModificationRequestList)(nil), "kubedb.dev.apimachinery.apis.dba.v1alpha1.MongoDBModificationRequestList")
 	proto.RegisterType((*MongoDBModificationRequestSpec)(nil), "kubedb.dev.apimachinery.apis.dba.v1alpha1.MongoDBModificationRequestSpec")
 	proto.RegisterType((*MongoDBModificationRequestStatus)(nil), "kubedb.dev.apimachinery.apis.dba.v1alpha1.MongoDBModificationRequestStatus")
+	proto.RegisterType((*MongosNode)(nil), "kubedb.dev.apimachinery.apis.dba.v1alpha1.MongosNode")
 	proto.RegisterType((*MySQLModificationRequest)(nil), "kubedb.dev.apimachinery.apis.dba.v1alpha1.MySQLModificationRequest")
 	proto.RegisterType((*MySQLModificationRequestCondition)(nil), "kubedb.dev.apimachinery.apis.dba.v1alpha1.MySQLModificationRequestCondition")
 	proto.RegisterType((*MySQLModificationRequestList)(nil), "kubedb.dev.apimachinery.apis.dba.v1alpha1.MySQLModificationRequestList")
@@ -1557,6 +1643,7 @@ func init() {
 	proto.RegisterType((*RedisModificationRequestSpec)(nil), "kubedb.dev.apimachinery.apis.dba.v1alpha1.RedisModificationRequestSpec")
 	proto.RegisterType((*RedisModificationRequestStatus)(nil), "kubedb.dev.apimachinery.apis.dba.v1alpha1.RedisModificationRequestStatus")
 	proto.RegisterType((*ScalingSpec)(nil), "kubedb.dev.apimachinery.apis.dba.v1alpha1.ScalingSpec")
+	proto.RegisterType((*ShardNode)(nil), "kubedb.dev.apimachinery.apis.dba.v1alpha1.ShardNode")
 	proto.RegisterType((*UpdateSpec)(nil), "kubedb.dev.apimachinery.apis.dba.v1alpha1.UpdateSpec")
 }
 
@@ -1565,102 +1652,135 @@ func init() {
 }
 
 var fileDescriptor_b5a799bc54483634 = []byte{
-	// 1515 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xec, 0x99, 0xcb, 0x6f, 0xdc, 0x44,
-	0x1c, 0xc7, 0x63, 0x27, 0x9b, 0x26, 0x13, 0x5a, 0xd0, 0xf0, 0xe8, 0x2a, 0x6d, 0x37, 0x5b, 0x53,
-	0x4a, 0x83, 0xc0, 0x4b, 0x2b, 0xa8, 0x8a, 0x7a, 0x40, 0x72, 0x5f, 0xa4, 0xcd, 0x92, 0xd4, 0x0d,
-	0x4f, 0x21, 0xc1, 0xac, 0x3d, 0xf1, 0x3a, 0xbb, 0x6b, 0x3b, 0x1e, 0x6f, 0x44, 0x4e, 0x54, 0xc0,
-	0x81, 0x23, 0x77, 0x10, 0x54, 0x82, 0x0b, 0xe2, 0xc8, 0x3f, 0x91, 0x63, 0x6f, 0x54, 0x15, 0x8a,
-	0x9a, 0x2d, 0xea, 0x01, 0x21, 0x0e, 0x39, 0x70, 0xe8, 0x09, 0x79, 0xec, 0xcd, 0xae, 0x37, 0x3b,
-	0x63, 0x2f, 0xeb, 0x64, 0x53, 0x69, 0x6f, 0x3b, 0xe3, 0xf9, 0x3d, 0xe6, 0xe7, 0xef, 0x7c, 0xc6,
-	0xfa, 0x2d, 0x78, 0xab, 0x52, 0x2f, 0x61, 0xbd, 0x24, 0xeb, 0x78, 0xad, 0x80, 0x1c, 0xb3, 0x86,
-	0xb4, 0xb2, 0x69, 0x61, 0x77, 0xdd, 0x1f, 0x90, 0x82, 0x5e, 0x42, 0x85, 0xb5, 0xb3, 0xa8, 0xea,
-	0x94, 0xd1, 0xd9, 0x82, 0x81, 0x2d, 0xec, 0x22, 0x0f, 0xeb, 0xb2, 0xe3, 0xda, 0x9e, 0x0d, 0x67,
-	0x5b, 0xa6, 0x72, 0xbb, 0xa9, 0x3f, 0x20, 0xb2, 0x5e, 0x42, 0x72, 0xd3, 0x74, 0xfa, 0x35, 0xc3,
-	0xf4, 0xca, 0xf5, 0x92, 0xac, 0xd9, 0xb5, 0x82, 0x61, 0x1b, 0x76, 0x81, 0x7a, 0x28, 0xd5, 0x97,
-	0xe9, 0x88, 0x0e, 0xe8, 0xaf, 0xc0, 0xf3, 0xb4, 0x54, 0xb9, 0x40, 0x64, 0xd3, 0xf6, 0x73, 0x28,
-	0x68, 0xb6, 0x8b, 0x0b, 0x6b, 0xbb, 0xa2, 0x4f, 0xbf, 0xd1, 0x5a, 0xd3, 0x4a, 0xda, 0xa9, 0x18,
-	0x41, 0xe2, 0x35, 0xec, 0xa1, 0x6e, 0x56, 0x05, 0x96, 0x95, 0x5b, 0xb7, 0x3c, 0xb3, 0x86, 0x77,
-	0x19, 0x9c, 0x8f, 0x33, 0x20, 0x5a, 0x19, 0xd7, 0x50, 0xa7, 0x9d, 0xb4, 0x2d, 0x82, 0xfc, 0x95,
-	0x2a, 0x22, 0x9e, 0xa9, 0x11, 0x8c, 0x5c, 0xad, 0x5c, 0xb4, 0x75, 0x73, 0xd9, 0xd4, 0x90, 0x67,
-	0xda, 0x96, 0x8a, 0x57, 0xeb, 0x98, 0x78, 0xf0, 0x33, 0x30, 0xe1, 0x27, 0xaa, 0x23, 0x0f, 0x65,
-	0x85, 0xbc, 0x70, 0x66, 0xea, 0xdc, 0xeb, 0x72, 0x10, 0x2f, 0x5a, 0x50, 0xa7, 0x62, 0x04, 0x45,
-	0xf5, 0x57, 0xcb, 0x6b, 0x67, 0xe5, 0x85, 0xd2, 0x0a, 0xd6, 0xbc, 0x22, 0xf6, 0x90, 0x02, 0x37,
-	0x36, 0x67, 0x46, 0x1a, 0x9b, 0x33, 0xa0, 0x35, 0xa7, 0xee, 0x78, 0x85, 0xab, 0x60, 0x8c, 0x38,
-	0x58, 0xcb, 0x8a, 0xd4, 0xfb, 0x82, 0x9c, 0xf8, 0x95, 0xc9, 0x71, 0xc9, 0xdf, 0x72, 0xb0, 0xa6,
-	0x3c, 0x15, 0x06, 0x1f, 0xf3, 0x47, 0x2a, 0x0d, 0x05, 0xd7, 0xc1, 0x38, 0xf1, 0x90, 0x57, 0x27,
-	0xd9, 0x51, 0x1a, 0xf4, 0x66, 0x9a, 0x41, 0xa9, 0x63, 0xe5, 0x48, 0x18, 0x76, 0x3c, 0x18, 0xab,
-	0x61, 0x40, 0xe9, 0x67, 0x11, 0xcc, 0xc6, 0xb9, 0xb8, 0x64, 0x5b, 0xba, 0xe9, 0x8f, 0xe1, 0x05,
-	0x30, 0xe6, 0xad, 0x3b, 0x98, 0x56, 0x7e, 0x52, 0x39, 0xd5, 0xdc, 0xca, 0xd2, 0xba, 0x83, 0x1f,
-	0x6f, 0xce, 0x3c, 0xd7, 0xb9, 0xde, 0x9f, 0x57, 0xa9, 0x05, 0x3c, 0x0d, 0xc6, 0x5d, 0x8c, 0x88,
-	0x6d, 0xd1, 0xba, 0x4e, 0xb6, 0xf2, 0x51, 0xe9, 0xac, 0x1a, 0x3e, 0x85, 0xb3, 0xe0, 0x50, 0x0d,
-	0x13, 0x82, 0x0c, 0x4c, 0x6b, 0x31, 0xa9, 0x3c, 0x1d, 0x2e, 0x3c, 0x54, 0x0c, 0xa6, 0xd5, 0xe6,
-	0x73, 0xb8, 0x02, 0x8e, 0xf8, 0x89, 0xbf, 0xe7, 0xe8, 0xc8, 0xc3, 0x4b, 0x66, 0x0d, 0x67, 0xc7,
-	0x68, 0xf5, 0x5e, 0x49, 0x26, 0x08, 0xdf, 0x42, 0x79, 0x21, 0xf4, 0x7e, 0x64, 0x3e, 0xe2, 0x49,
-	0xed, 0xf0, 0x2c, 0xfd, 0x2b, 0x80, 0x53, 0x71, 0x65, 0x9a, 0x37, 0x89, 0x07, 0x3f, 0xd9, 0xa5,
-	0x4f, 0x39, 0x59, 0x3a, 0xbe, 0x35, 0x55, 0xe7, 0x33, 0x61, 0x4a, 0x13, 0xcd, 0x99, 0x36, 0x6d,
-	0x3a, 0x20, 0x63, 0x7a, 0xb8, 0x46, 0xb2, 0x62, 0x7e, 0xf4, 0xcc, 0xd4, 0xb9, 0x1b, 0x29, 0xea,
-	0x44, 0x39, 0x1c, 0xc6, 0xcd, 0xcc, 0xf9, 0x11, 0xd4, 0x20, 0x90, 0x74, 0x3a, 0x7e, 0xdf, 0xbe,
-	0x90, 0xa5, 0xdf, 0x04, 0x70, 0x3a, 0x99, 0x14, 0xe1, 0x37, 0x02, 0x00, 0x5a, 0x53, 0x22, 0x24,
-	0x2b, 0xd0, 0xad, 0x2c, 0xa5, 0xb8, 0x95, 0x1d, 0xfd, 0xb5, 0x4e, 0xfa, 0xce, 0x14, 0x51, 0xdb,
-	0x62, 0x4b, 0xbf, 0x8b, 0xe0, 0xe8, 0x15, 0x4f, 0xd3, 0x07, 0x43, 0x9a, 0x72, 0x84, 0x34, 0x57,
-	0x7b, 0xa9, 0x40, 0xf7, 0x9c, 0x99, 0x80, 0x71, 0x3a, 0x00, 0xf3, 0x4e, 0x0a, 0xb1, 0xf8, 0x5c,
-	0xf9, 0xce, 0x87, 0x79, 0x77, 0xcb, 0x21, 0x4e, 0xa4, 0x3f, 0x05, 0x70, 0x8c, 0x51, 0x9d, 0x7d,
-	0xa0, 0x88, 0x11, 0xa5, 0x88, 0xd2, 0xbf, 0x18, 0x18, 0xf0, 0x38, 0xc1, 0xdc, 0x25, 0x65, 0xc6,
-	0x1d, 0x01, 0x9c, 0xe0, 0xaa, 0x0b, 0x7e, 0xd1, 0x85, 0x14, 0x37, 0xfa, 0x4f, 0x37, 0x39, 0x20,
-	0x1e, 0x89, 0xe0, 0x78, 0x11, 0xd7, 0x34, 0xa4, 0x95, 0xf1, 0x80, 0x28, 0x51, 0x8b, 0x50, 0xa2,
-	0x97, 0xdd, 0xf3, 0x12, 0x67, 0xa2, 0xa2, 0xde, 0x81, 0x8a, 0x62, 0x5a, 0x01, 0xf9, 0xbc, 0xb8,
-	0x23, 0x82, 0x97, 0x78, 0xe6, 0x43, 0x68, 0x48, 0xff, 0x08, 0x20, 0xcf, 0x2b, 0xd1, 0x3e, 0x90,
-	0xa3, 0x1a, 0x25, 0xc7, 0xb5, 0x94, 0xb4, 0xc1, 0xc0, 0x87, 0xc4, 0xdf, 0x2f, 0x65, 0xc8, 0xaf,
-	0x02, 0x90, 0xe2, 0x65, 0x07, 0xbf, 0xee, 0xf6, 0xcd, 0xb1, 0x98, 0x52, 0xfa, 0xc9, 0x71, 0xf2,
-	0x40, 0x04, 0xd3, 0x45, 0xdb, 0x32, 0xec, 0xcb, 0xca, 0x60, 0x60, 0x52, 0x89, 0xc0, 0x64, 0xae,
-	0x97, 0x02, 0x30, 0xd3, 0x66, 0xa2, 0x84, 0x74, 0xa0, 0xe4, 0x46, 0x3a, 0xe1, 0xf8, 0x20, 0xf9,
-	0x41, 0x04, 0x2f, 0xb2, 0x8d, 0x87, 0x18, 0x91, 0xfe, 0x12, 0x40, 0x8e, 0x5d, 0xa0, 0x7d, 0x80,
-	0xc8, 0x4a, 0x14, 0x22, 0x57, 0x52, 0x51, 0x05, 0x03, 0x21, 0xdb, 0x22, 0x6f, 0xb3, 0xbe, 0x56,
-	0xe1, 0xa7, 0x60, 0xca, 0x4f, 0xab, 0x84, 0x08, 0x56, 0xf1, 0x72, 0xb8, 0xdf, 0x33, 0x6d, 0xfb,
-	0x95, 0x35, 0xdb, 0xc5, 0x74, 0x77, 0xb6, 0x86, 0xaa, 0xc1, 0xb1, 0x52, 0xf1, 0x32, 0x76, 0xb1,
-	0xa5, 0x61, 0xe5, 0xd9, 0x30, 0xee, 0xd4, 0xe5, 0x96, 0x13, 0xb5, 0xdd, 0x23, 0xbc, 0x18, 0x2a,
-	0x2d, 0x50, 0xcb, 0xcb, 0x1d, 0x4a, 0x3b, 0xda, 0x25, 0xaf, 0x36, 0xb1, 0x7d, 0x04, 0xc6, 0xeb,
-	0xf4, 0xdd, 0x85, 0x67, 0xe8, 0xcd, 0x1e, 0xaa, 0x15, 0xbc, 0x74, 0x7a, 0x3c, 0x81, 0xaf, 0xcf,
-	0x60, 0xac, 0x86, 0x0e, 0xe1, 0x07, 0x20, 0x43, 0x34, 0x54, 0x6d, 0x6a, 0xed, 0x7c, 0x0f, 0x9e,
-	0x6f, 0x69, 0xa8, 0x6a, 0x5a, 0x06, 0x75, 0x3d, 0xe9, 0x17, 0xdd, 0x9f, 0xc0, 0x6a, 0xe0, 0x4f,
-	0xfa, 0x43, 0x04, 0xf9, 0xb8, 0xf3, 0x0b, 0xdf, 0x06, 0x19, 0xa7, 0x8c, 0x48, 0xf3, 0x00, 0xce,
-	0x36, 0x5f, 0xdf, 0xa2, 0x3f, 0xf9, 0x78, 0x73, 0x26, 0xdb, 0xc5, 0x94, 0x3e, 0x53, 0x03, 0xbb,
-	0xc4, 0xc7, 0xf0, 0xcb, 0x28, 0xfa, 0x47, 0xa9, 0xe8, 0xde, 0x4d, 0x45, 0x74, 0x89, 0xc1, 0x0f,
-	0xaf, 0x03, 0x68, 0x97, 0x08, 0x76, 0xd7, 0xb0, 0x7e, 0x2d, 0x68, 0x7b, 0x99, 0xb6, 0x45, 0x0b,
-	0x3f, 0xaa, 0x4c, 0x87, 0xb6, 0x70, 0x61, 0xd7, 0x0a, 0xb5, 0x8b, 0x95, 0x74, 0x5f, 0x04, 0xd9,
-	0xe2, 0xfa, 0xad, 0x9b, 0xf3, 0x83, 0xb9, 0x42, 0xcc, 0xc8, 0x15, 0xd2, 0xd3, 0x27, 0x00, 0x23,
-	0x69, 0xe6, 0x05, 0xb2, 0xda, 0x71, 0x81, 0xcc, 0xa5, 0x11, 0x8c, 0x7f, 0x7d, 0x7c, 0x2f, 0x82,
-	0x93, 0x2c, 0xd3, 0xe1, 0xe5, 0x21, 0x3d, 0x12, 0xc0, 0x71, 0x56, 0x79, 0xf6, 0xe1, 0xea, 0x28,
-	0x47, 0xaf, 0x8e, 0x4b, 0x29, 0xe8, 0x81, 0x71, 0x71, 0xe4, 0xd8, 0xfb, 0xa4, 0xdf, 0x9d, 0x3f,
-	0xf9, 0xb7, 0x28, 0x57, 0x62, 0xf0, 0x76, 0xb7, 0x6f, 0xce, 0xf9, 0x14, 0x52, 0x4e, 0xfe, 0xbd,
-	0xb9, 0x2d, 0x82, 0xfc, 0x22, 0x76, 0x35, 0xdb, 0x42, 0x1f, 0x7a, 0x2e, 0x1a, 0xd4, 0x57, 0xe7,
-	0xff, 0x6f, 0xa9, 0xc7, 0x25, 0xbf, 0x27, 0x2d, 0xf5, 0xd8, 0xa0, 0xf1, 0x2d, 0xf5, 0x38, 0x17,
-	0x43, 0x94, 0xd0, 0x96, 0x7a, 0x5c, 0x99, 0x0e, 0x76, 0x4b, 0x3d, 0x2e, 0x7b, 0x76, 0x4b, 0x3d,
-	0x89, 0xac, 0x69, 0x4b, 0x3d, 0x99, 0x14, 0xfb, 0x6f, 0xa9, 0x27, 0xd6, 0x6b, 0xa2, 0x8e, 0xd9,
-	0xa2, 0xa1, 0xd8, 0x75, 0x4b, 0xc3, 0xee, 0x93, 0xd6, 0x31, 0xe3, 0x25, 0xbe, 0x27, 0x1d, 0x33,
-	0x6e, 0xc0, 0xf8, 0x8e, 0x19, 0xcf, 0x7c, 0x88, 0x18, 0xda, 0x31, 0xe3, 0x95, 0xe8, 0x60, 0x77,
-	0xcc, 0x78, 0x99, 0xb3, 0x3b, 0x66, 0x71, 0x12, 0xa6, 0x1d, 0xb3, 0x78, 0xd9, 0xf5, 0xdf, 0x31,
-	0x4b, 0xa4, 0xcd, 0x58, 0x9c, 0x3c, 0x14, 0xc1, 0xb1, 0x45, 0x9b, 0x78, 0x86, 0x8b, 0xc9, 0x60,
-	0x68, 0x52, 0x8d, 0xd0, 0xe4, 0x7a, 0x2f, 0x15, 0x60, 0xe7, 0xcd, 0x84, 0x89, 0xd7, 0x01, 0x93,
-	0xf9, 0x94, 0xe2, 0xf1, 0x59, 0xf2, 0xa3, 0x08, 0x4e, 0x71, 0xac, 0x87, 0x28, 0x91, 0xfe, 0x16,
-	0xc0, 0x0c, 0xa7, 0x42, 0xfb, 0x40, 0x92, 0x4a, 0x94, 0x24, 0x57, 0xd3, 0x11, 0x06, 0x03, 0x24,
-	0x27, 0xb9, 0xbb, 0xa5, 0x1c, 0xf9, 0x45, 0x00, 0x27, 0x63, 0x15, 0x07, 0xbf, 0xea, 0x86, 0x91,
-	0x85, 0x74, 0x72, 0xef, 0x91, 0x22, 0xae, 0xfd, 0xf9, 0xe0, 0xba, 0x26, 0x7d, 0x50, 0x84, 0x9d,
-	0xf7, 0xde, 0x50, 0x84, 0x13, 0x2f, 0x01, 0x45, 0xd8, 0xd6, 0x43, 0x8a, 0x04, 0x14, 0x61, 0x57,
-	0xe8, 0x80, 0x53, 0x84, 0x9d, 0x38, 0x87, 0x22, 0x7c, 0xf5, 0x06, 0x14, 0x89, 0x53, 0x5c, 0x0a,
-	0x14, 0x49, 0x20, 0xcb, 0x58, 0x8a, 0xdc, 0x17, 0x41, 0x56, 0xc5, 0xba, 0x49, 0x9e, 0xb4, 0xc6,
-	0x2b, 0x2b, 0xe9, 0x3d, 0x69, 0xbc, 0x32, 0x83, 0xc5, 0x37, 0x5e, 0x59, 0xa6, 0x43, 0x72, 0xd0,
-	0xc6, 0x2b, 0xab, 0x3c, 0x07, 0xbb, 0xf1, 0xca, 0xca, 0x9a, 0xdd, 0x78, 0xe5, 0xc9, 0x95, 0x36,
-	0x5e, 0xf9, 0x12, 0xeb, 0xbf, 0xf1, 0x1a, 0xab, 0xc3, 0x58, 0x54, 0x68, 0x60, 0xaa, 0xed, 0x3f,
-	0x32, 0x5f, 0x7c, 0xa4, 0x8c, 0x5c, 0x9d, 0xd0, 0x57, 0x93, 0x69, 0x3b, 0x04, 0x74, 0x56, 0x0d,
-	0x9f, 0xc2, 0x57, 0xc1, 0x84, 0x8b, 0x9d, 0xaa, 0xa9, 0x21, 0x42, 0x65, 0x9a, 0x69, 0xbd, 0x14,
-	0x35, 0x9c, 0x57, 0x77, 0x56, 0x48, 0x73, 0x00, 0xb4, 0xfe, 0xe2, 0x83, 0x17, 0xc1, 0x61, 0x0f,
-	0xb9, 0x06, 0xf6, 0xde, 0xc7, 0x2e, 0x31, 0x6d, 0x2b, 0x3c, 0x23, 0xcf, 0x87, 0x0e, 0x0e, 0x2f,
-	0xb5, 0x3f, 0x54, 0xa3, 0x6b, 0x15, 0x79, 0x63, 0x2b, 0x37, 0x72, 0x77, 0x2b, 0x37, 0x72, 0x6f,
-	0x2b, 0x37, 0x72, 0xbb, 0x91, 0x13, 0x36, 0x1a, 0x39, 0xe1, 0x6e, 0x23, 0x27, 0xdc, 0x6b, 0xe4,
-	0x84, 0x07, 0x8d, 0x9c, 0xf0, 0xed, 0xc3, 0xdc, 0xc8, 0xc7, 0x13, 0xcd, 0x0a, 0xfd, 0x17, 0x00,
-	0x00, 0xff, 0xff, 0x22, 0xf8, 0x75, 0x48, 0x04, 0x2f, 0x00, 0x00,
+	// 1627 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xec, 0x9a, 0x4d, 0x6f, 0xdc, 0x44,
+	0x18, 0xc7, 0x63, 0xe7, 0xa5, 0xc9, 0x93, 0xb6, 0x54, 0xc3, 0x4b, 0x57, 0x69, 0xbb, 0x49, 0x4d,
+	0x29, 0x0d, 0x02, 0x2f, 0xad, 0x4a, 0x55, 0xda, 0x03, 0x92, 0xd3, 0x17, 0xd2, 0x26, 0x4d, 0xea,
+	0xa4, 0x40, 0x11, 0x12, 0xcc, 0xda, 0x13, 0xaf, 0x9b, 0x5d, 0xdb, 0xf5, 0x78, 0x23, 0x72, 0xa2,
+	0x02, 0x0e, 0x1c, 0xb9, 0x83, 0xa0, 0x12, 0x5c, 0x10, 0xdc, 0xf8, 0x12, 0x3d, 0xf6, 0x46, 0x55,
+	0xa1, 0xa8, 0xdd, 0xa2, 0x1e, 0x10, 0xe2, 0xd0, 0x03, 0x87, 0x9e, 0x90, 0xc7, 0xde, 0xec, 0x7a,
+	0xb3, 0x63, 0x7b, 0x1b, 0x27, 0x9b, 0x4a, 0x7b, 0xcb, 0xcc, 0xfa, 0x79, 0x99, 0xc7, 0xff, 0xf9,
+	0x8d, 0xf5, 0x4c, 0xe0, 0xdd, 0xe5, 0x6a, 0x91, 0xe8, 0x45, 0x59, 0x27, 0x2b, 0x05, 0xec, 0x98,
+	0x15, 0xac, 0x95, 0x4c, 0x8b, 0xb8, 0xab, 0xfe, 0x80, 0x16, 0xf4, 0x22, 0x2e, 0xac, 0x1c, 0xc7,
+	0x65, 0xa7, 0x84, 0x8f, 0x17, 0x0c, 0x62, 0x11, 0x17, 0x7b, 0x44, 0x97, 0x1d, 0xd7, 0xf6, 0x6c,
+	0x34, 0xd9, 0x30, 0x95, 0x9b, 0x4d, 0xfd, 0x01, 0x95, 0xf5, 0x22, 0x96, 0xeb, 0xa6, 0x63, 0x6f,
+	0x19, 0xa6, 0x57, 0xaa, 0x16, 0x65, 0xcd, 0xae, 0x14, 0x0c, 0xdb, 0xb0, 0x0b, 0xcc, 0x43, 0xb1,
+	0xba, 0xc4, 0x46, 0x6c, 0xc0, 0xfe, 0x0a, 0x3c, 0x8f, 0x49, 0xcb, 0xa7, 0xa9, 0x6c, 0xda, 0x7e,
+	0x0e, 0x05, 0xcd, 0x76, 0x49, 0x61, 0x65, 0x43, 0xf4, 0xb1, 0x93, 0x8d, 0x67, 0x1a, 0x49, 0x3b,
+	0xcb, 0x46, 0x90, 0x78, 0x85, 0x78, 0xb8, 0x9d, 0x55, 0x81, 0x67, 0xe5, 0x56, 0x2d, 0xcf, 0xac,
+	0x90, 0x0d, 0x06, 0xa7, 0x92, 0x0c, 0xa8, 0x56, 0x22, 0x15, 0xdc, 0x6a, 0x27, 0x9d, 0x01, 0x98,
+	0xb2, 0xad, 0x25, 0xd3, 0xb8, 0x62, 0xeb, 0x04, 0xbd, 0x09, 0xc3, 0x2e, 0x71, 0xca, 0xa6, 0x86,
+	0x69, 0x4e, 0x98, 0x10, 0x8e, 0x0d, 0x2a, 0xfb, 0xee, 0xac, 0x8d, 0xf7, 0xd5, 0xd6, 0xc6, 0x87,
+	0xd5, 0x70, 0x5e, 0x5d, 0x7f, 0x42, 0x7a, 0x22, 0xc2, 0xc4, 0xf9, 0x32, 0xa6, 0x9e, 0xa9, 0x51,
+	0x82, 0x5d, 0xad, 0x34, 0x6b, 0xeb, 0xe6, 0x92, 0xa9, 0x61, 0xcf, 0xb4, 0x2d, 0x95, 0xdc, 0xac,
+	0x12, 0xea, 0xa1, 0xcf, 0x60, 0xd8, 0x5f, 0xa4, 0x8e, 0x3d, 0xcc, 0x5c, 0x8e, 0x9e, 0x78, 0x5b,
+	0x0e, 0x72, 0x8d, 0xbe, 0x0c, 0x67, 0xd9, 0x08, 0x5e, 0x88, 0xff, 0xb4, 0xbc, 0x72, 0x5c, 0x9e,
+	0x2b, 0xde, 0x20, 0x9a, 0x37, 0x4b, 0x3c, 0xac, 0xa0, 0x30, 0x09, 0x68, 0xcc, 0xa9, 0xeb, 0x5e,
+	0xd1, 0x4d, 0x18, 0xa0, 0x0e, 0xd1, 0x72, 0x22, 0xf3, 0x3e, 0x27, 0xa7, 0x7e, 0xdd, 0x72, 0x52,
+	0xf2, 0x0b, 0x0e, 0xd1, 0x94, 0xdd, 0x61, 0xf0, 0x01, 0x7f, 0xa4, 0xb2, 0x50, 0x68, 0x15, 0x86,
+	0xa8, 0x87, 0xbd, 0x2a, 0xcd, 0xf5, 0xb3, 0xa0, 0x57, 0xb3, 0x0c, 0xca, 0x1c, 0x2b, 0x7b, 0xc3,
+	0xb0, 0x43, 0xc1, 0x58, 0x0d, 0x03, 0x4a, 0x3f, 0x8b, 0x30, 0x99, 0xe4, 0x62, 0xca, 0xb6, 0x74,
+	0xd3, 0x1f, 0xa3, 0xd3, 0x30, 0xe0, 0xad, 0x3a, 0x84, 0x55, 0x7e, 0x44, 0x39, 0x52, 0x5f, 0xca,
+	0xe2, 0xaa, 0x43, 0x9e, 0xae, 0x8d, 0xbf, 0xd4, 0xfa, 0xbc, 0x3f, 0xaf, 0x32, 0x0b, 0x74, 0x14,
+	0x86, 0x5c, 0x82, 0xa9, 0x6d, 0xb1, 0xba, 0x8e, 0x34, 0xf2, 0x51, 0xd9, 0xac, 0x1a, 0xfe, 0x8a,
+	0x26, 0x61, 0x57, 0x85, 0x50, 0x8a, 0x0d, 0xc2, 0x6a, 0x31, 0xa2, 0xbc, 0x10, 0x3e, 0xb8, 0x6b,
+	0x36, 0x98, 0x56, 0xeb, 0xbf, 0xa3, 0x1b, 0xb0, 0xd7, 0x4f, 0xfc, 0x9a, 0xa3, 0x63, 0x8f, 0x2c,
+	0x9a, 0x15, 0x92, 0x1b, 0x60, 0xd5, 0x7b, 0x23, 0x9d, 0x20, 0x7c, 0x0b, 0xe5, 0x95, 0xd0, 0xfb,
+	0xde, 0x99, 0x88, 0x27, 0xb5, 0xc5, 0xb3, 0xf4, 0x9f, 0x00, 0x47, 0x92, 0xca, 0x34, 0x63, 0x52,
+	0x0f, 0x7d, 0xb2, 0x41, 0x9f, 0x72, 0xba, 0x74, 0x7c, 0x6b, 0xa6, 0xce, 0xf5, 0x2d, 0x52, 0x9f,
+	0x69, 0xd2, 0xa6, 0x03, 0x83, 0xa6, 0x47, 0x2a, 0x34, 0x27, 0x4e, 0xf4, 0x1f, 0x1b, 0x3d, 0x71,
+	0x39, 0x43, 0x9d, 0x28, 0x7b, 0xc2, 0xb8, 0x83, 0xd3, 0x7e, 0x04, 0x35, 0x08, 0x24, 0x1d, 0x4d,
+	0x5e, 0xb7, 0x2f, 0x64, 0xe9, 0x77, 0x01, 0x8e, 0xa6, 0x93, 0x22, 0xfa, 0x46, 0x00, 0xd0, 0xea,
+	0x12, 0xf1, 0xc1, 0xe0, 0x2f, 0x65, 0x31, 0xc3, 0xa5, 0xac, 0xeb, 0xaf, 0xb1, 0xd3, 0xd7, 0xa7,
+	0xa8, 0xda, 0x14, 0x5b, 0xfa, 0x43, 0x84, 0xfd, 0xe7, 0x3d, 0x4d, 0xef, 0x0e, 0x69, 0x4a, 0x11,
+	0xd2, 0x5c, 0xe8, 0xa4, 0x02, 0xed, 0x73, 0xe6, 0x02, 0xc6, 0x69, 0x01, 0xcc, 0xfb, 0x19, 0xc4,
+	0x8a, 0xe7, 0xca, 0x77, 0x3e, 0xcc, 0xdb, 0x5b, 0xf6, 0x70, 0x22, 0xfd, 0x25, 0xc0, 0x01, 0x4e,
+	0x75, 0xb6, 0x81, 0x22, 0x46, 0x94, 0x22, 0xca, 0xe6, 0xc5, 0xc0, 0x81, 0xc7, 0x21, 0xee, 0x2a,
+	0x19, 0x33, 0x6e, 0x0b, 0x70, 0x28, 0x56, 0x5d, 0xe8, 0x8b, 0x36, 0xa4, 0xb8, 0xbc, 0xf9, 0x74,
+	0xd3, 0x03, 0xe2, 0xb1, 0x08, 0x07, 0x67, 0x49, 0x45, 0xc3, 0x5a, 0x89, 0x74, 0x89, 0x12, 0x95,
+	0x08, 0x25, 0x3a, 0x59, 0x7d, 0x5c, 0xe2, 0x5c, 0x54, 0x54, 0x5b, 0x50, 0x31, 0x9b, 0x55, 0xc0,
+	0x78, 0x5e, 0xdc, 0x16, 0xe1, 0xb5, 0x38, 0xf3, 0x1e, 0x34, 0xa4, 0x7f, 0x05, 0x98, 0x88, 0x2b,
+	0xd1, 0x36, 0x90, 0xa3, 0x1c, 0x25, 0xc7, 0xc5, 0x8c, 0xb4, 0xc1, 0xc1, 0x87, 0x14, 0xbf, 0x5e,
+	0xc6, 0x90, 0x5f, 0x05, 0x90, 0x92, 0x65, 0x87, 0xbe, 0x6e, 0xf7, 0xcd, 0x31, 0x9f, 0x51, 0xfa,
+	0xe9, 0x71, 0xf2, 0x40, 0x84, 0xb1, 0x59, 0xdb, 0x32, 0xec, 0x73, 0x4a, 0x77, 0x60, 0xb2, 0x1c,
+	0x81, 0xc9, 0x74, 0x27, 0x05, 0xe0, 0xa6, 0xcd, 0x45, 0x09, 0x6d, 0x41, 0xc9, 0xe5, 0x6c, 0xc2,
+	0xc5, 0x83, 0xe4, 0x07, 0x11, 0x5e, 0xe5, 0x1b, 0xf7, 0x30, 0x22, 0xfd, 0x2d, 0x40, 0x9e, 0x5f,
+	0xa0, 0x6d, 0x80, 0xc8, 0x8d, 0x28, 0x44, 0xce, 0x67, 0xa2, 0x0a, 0x0e, 0x42, 0x9e, 0x88, 0x71,
+	0x8b, 0xf5, 0xb5, 0x8a, 0x3e, 0x85, 0x51, 0x3f, 0xad, 0x22, 0xa6, 0x44, 0x25, 0x4b, 0xe1, 0x7a,
+	0x8f, 0x35, 0xad, 0x57, 0xd6, 0x6c, 0x97, 0xb0, 0xd5, 0xd9, 0x1a, 0x2e, 0x07, 0xdb, 0x4a, 0x25,
+	0x4b, 0xc4, 0x25, 0x96, 0x46, 0x94, 0x17, 0xc3, 0xb8, 0xa3, 0xe7, 0x1a, 0x4e, 0xd4, 0x66, 0x8f,
+	0xe8, 0x6c, 0xa8, 0xb4, 0x40, 0x2d, 0xaf, 0xb7, 0x28, 0x6d, 0x7f, 0x9b, 0xbc, 0x9a, 0xc4, 0x76,
+	0x1d, 0x86, 0xaa, 0xec, 0xdd, 0x85, 0x7b, 0xe8, 0x9d, 0x0e, 0xaa, 0x15, 0xbc, 0x74, 0xb6, 0x3d,
+	0xc1, 0xd7, 0x67, 0x30, 0x56, 0x43, 0x87, 0xe8, 0x43, 0x18, 0xa4, 0x1a, 0x2e, 0xd7, 0xb5, 0x76,
+	0xaa, 0x03, 0xcf, 0x0b, 0x1a, 0x2e, 0x9b, 0x96, 0xc1, 0x5c, 0x8f, 0xf8, 0x45, 0xf7, 0x27, 0x88,
+	0x1a, 0xf8, 0x93, 0xfe, 0x14, 0x61, 0x22, 0x69, 0xff, 0xa2, 0xf7, 0x60, 0xd0, 0x29, 0x61, 0x5a,
+	0xdf, 0x80, 0x93, 0xf5, 0xd7, 0x37, 0xef, 0x4f, 0x3e, 0x5d, 0x1b, 0xcf, 0xb5, 0x31, 0x65, 0xbf,
+	0xa9, 0x81, 0x5d, 0xea, 0x6d, 0xf8, 0x65, 0x14, 0xfd, 0xfd, 0x4c, 0x74, 0x57, 0x32, 0x11, 0x5d,
+	0x6a, 0xf0, 0xa3, 0x4b, 0x80, 0xec, 0x22, 0x25, 0xee, 0x0a, 0xd1, 0x2f, 0x06, 0x2d, 0x33, 0xd3,
+	0xb6, 0x58, 0xe1, 0xfb, 0x95, 0xb1, 0xd0, 0x16, 0xcd, 0x6d, 0x78, 0x42, 0x6d, 0x63, 0x25, 0x9d,
+	0x01, 0x60, 0x29, 0xd1, 0x67, 0xe8, 0xb1, 0xdd, 0x17, 0x21, 0x37, 0xbb, 0xba, 0x70, 0x75, 0xa6,
+	0x3b, 0xc7, 0x8f, 0x19, 0x39, 0x7e, 0x3a, 0xfa, 0x7c, 0xe0, 0x24, 0xcd, 0x3d, 0x7c, 0x6e, 0xb6,
+	0x1c, 0x3e, 0xd3, 0x59, 0x04, 0x8b, 0x3f, 0x7a, 0xbe, 0x17, 0xe1, 0x30, 0xcf, 0xb4, 0x77, 0xf0,
+	0x48, 0x8f, 0x05, 0x38, 0xc8, 0x2b, 0xcf, 0x36, 0x1c, 0x3b, 0xa5, 0xe8, 0xb1, 0x33, 0x95, 0x81,
+	0x1e, 0x38, 0x87, 0x4e, 0x9e, 0xbf, 0x4e, 0xf6, 0xcd, 0xfa, 0x93, 0x7f, 0x02, 0xc7, 0x4a, 0x0c,
+	0xdd, 0x6a, 0xf7, 0xbd, 0x3a, 0x93, 0x41, 0xca, 0xe9, 0xbf, 0x55, 0x9f, 0x88, 0x30, 0x31, 0x4f,
+	0x5c, 0xcd, 0xb6, 0xf0, 0x47, 0x9e, 0x8b, 0xbb, 0xf5, 0xc5, 0xfa, 0xec, 0xed, 0xf8, 0xa4, 0xe4,
+	0xb7, 0xa4, 0x1d, 0x9f, 0x18, 0x34, 0xb9, 0x1d, 0x9f, 0xe4, 0xa2, 0x87, 0x12, 0xd6, 0x8e, 0x4f,
+	0x2a, 0xd3, 0xce, 0x6e, 0xc7, 0x27, 0x65, 0xcf, 0x6f, 0xc7, 0xa7, 0x91, 0x35, 0x6b, 0xc7, 0xa7,
+	0x93, 0xe2, 0xe6, 0xdb, 0xf1, 0xa9, 0xf5, 0x9a, 0xaa, 0xdb, 0x36, 0x6f, 0x28, 0x76, 0xd5, 0xd2,
+	0x88, 0xfb, 0xbc, 0x75, 0xdb, 0xe2, 0x12, 0xdf, 0x92, 0x6e, 0x5b, 0x6c, 0xc0, 0xe4, 0x6e, 0x5b,
+	0x9c, 0x79, 0x0f, 0x31, 0xac, 0xdb, 0x16, 0x57, 0xa2, 0x9d, 0xdd, 0x6d, 0x8b, 0xcb, 0x9c, 0xdf,
+	0x6d, 0x4b, 0x92, 0x30, 0xeb, 0xb6, 0x25, 0xcb, 0x6e, 0xf3, 0xdd, 0xb6, 0x54, 0xda, 0x4c, 0xc4,
+	0xc9, 0x23, 0x11, 0x0e, 0xcc, 0xdb, 0xd4, 0x33, 0x5c, 0x42, 0xbb, 0x43, 0x93, 0x72, 0x84, 0x26,
+	0x97, 0x3a, 0xa9, 0x00, 0x3f, 0x6f, 0x2e, 0x4c, 0xbc, 0x16, 0x98, 0xcc, 0x64, 0x14, 0x2f, 0x9e,
+	0x25, 0x3f, 0x8a, 0x70, 0x24, 0xc6, 0xba, 0x87, 0x12, 0xe9, 0x1f, 0x01, 0xc6, 0x63, 0x2a, 0xb4,
+	0x0d, 0x24, 0x59, 0x8e, 0x92, 0xe4, 0x42, 0x36, 0xc2, 0xe0, 0x80, 0xe4, 0x70, 0xec, 0x6a, 0x19,
+	0x47, 0x7e, 0x11, 0xe0, 0x70, 0xa2, 0xe2, 0xd0, 0x57, 0xed, 0x30, 0x32, 0x97, 0x4d, 0xee, 0x1d,
+	0x52, 0xc4, 0xb5, 0x3f, 0xef, 0x5e, 0xd7, 0x64, 0x13, 0x14, 0xe1, 0xe7, 0xbd, 0x35, 0x14, 0x89,
+	0x89, 0x97, 0x82, 0x22, 0x7c, 0xeb, 0x1e, 0x45, 0x02, 0x8a, 0xf0, 0x2b, 0xb4, 0xc3, 0x29, 0xc2,
+	0x4f, 0x3c, 0x86, 0x22, 0xf1, 0xea, 0x0d, 0x28, 0x92, 0xa4, 0xb8, 0x0c, 0x28, 0x92, 0x42, 0x96,
+	0x89, 0x14, 0xb9, 0x2f, 0x42, 0x4e, 0x25, 0xba, 0x49, 0x9f, 0xb7, 0xc6, 0x2b, 0x2f, 0xe9, 0x2d,
+	0x69, 0xbc, 0x72, 0x83, 0x25, 0x37, 0x5e, 0x79, 0xa6, 0x3d, 0x72, 0xb0, 0xc6, 0x2b, 0xaf, 0x3c,
+	0x3b, 0xbb, 0xf1, 0xca, 0xcb, 0x9a, 0xdf, 0x78, 0x8d, 0x93, 0x2b, 0x6b, 0xbc, 0xc6, 0x4b, 0x6c,
+	0xf3, 0x8d, 0xd7, 0x44, 0x1d, 0x26, 0xa2, 0xe2, 0x37, 0x11, 0x46, 0x9b, 0x2e, 0xd8, 0xd0, 0x35,
+	0x18, 0xa4, 0x25, 0xec, 0xea, 0xe1, 0xab, 0x39, 0xd9, 0xc9, 0x3d, 0x9d, 0x6f, 0x77, 0xc5, 0xd6,
+	0x49, 0x78, 0x4b, 0xe7, 0x0f, 0xd5, 0xc0, 0x1b, 0x5a, 0x86, 0xdd, 0x1a, 0xfb, 0x57, 0xed, 0x05,
+	0xe2, 0xae, 0x10, 0x37, 0x44, 0x43, 0x27, 0xf7, 0x8b, 0x8d, 0xff, 0xf4, 0x56, 0xf6, 0xd5, 0xd6,
+	0xc6, 0x77, 0x4f, 0x35, 0xb9, 0x53, 0x23, 0xce, 0xd1, 0x75, 0x18, 0xaa, 0xb0, 0x3b, 0xab, 0x67,
+	0xb8, 0xc6, 0x6c, 0x5c, 0x76, 0x05, 0xd7, 0x98, 0xc1, 0x58, 0x0d, 0x1d, 0x4a, 0x18, 0x46, 0xd6,
+	0x97, 0xe9, 0xef, 0x54, 0xb6, 0xba, 0xfa, 0x5d, 0x58, 0x83, 0x18, 0x6c, 0x56, 0x0d, 0x7f, 0x8d,
+	0xdc, 0x9a, 0x89, 0x89, 0xb7, 0x66, 0xd3, 0x00, 0x8d, 0xbb, 0x54, 0x74, 0x16, 0xf6, 0x78, 0xd8,
+	0x35, 0x88, 0xf7, 0x01, 0x71, 0xa9, 0x69, 0x5b, 0x21, 0x50, 0x5e, 0x0e, 0x1d, 0xec, 0x59, 0x6c,
+	0xfe, 0x51, 0x8d, 0x3e, 0xab, 0xc8, 0x77, 0x1e, 0xe6, 0xfb, 0xee, 0x3e, 0xcc, 0xf7, 0xdd, 0x7b,
+	0x98, 0xef, 0xbb, 0x55, 0xcb, 0x0b, 0x77, 0x6a, 0x79, 0xe1, 0x6e, 0x2d, 0x2f, 0xdc, 0xab, 0xe5,
+	0x85, 0x07, 0xb5, 0xbc, 0xf0, 0xed, 0xa3, 0x7c, 0xdf, 0xc7, 0xc3, 0xf5, 0xc5, 0xff, 0x1f, 0x00,
+	0x00, 0xff, 0xff, 0x45, 0x5f, 0x75, 0xb9, 0xa9, 0x30, 0x00, 0x00,
+}
+
+func (m *ConfigNode) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *ConfigNode) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *ConfigNode) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	i = encodeVarintGenerated(dAtA, i, uint64(m.Replicas))
+	i--
+	dAtA[i] = 0x8
+	return len(dAtA) - i, nil
 }
 
 func (m *ElasticsearchModificationRequest) Marshal() (dAtA []byte, err error) {
@@ -2544,6 +2664,32 @@ func (m *MongoDBModificationRequestStatus) MarshalToSizedBuffer(dAtA []byte) (in
 	i = encodeVarintGenerated(dAtA, i, uint64(len(m.Phase)))
 	i--
 	dAtA[i] = 0xa
+	return len(dAtA) - i, nil
+}
+
+func (m *MongosNode) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MongosNode) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MongosNode) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	i = encodeVarintGenerated(dAtA, i, uint64(m.Replicas))
+	i--
+	dAtA[i] = 0x8
 	return len(dAtA) - i, nil
 }
 
@@ -3815,6 +3961,65 @@ func (m *ScalingSpec) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	_ = i
 	var l int
 	_ = l
+	if m.Mongos != nil {
+		{
+			size, err := m.Mongos.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintGenerated(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0x1a
+	}
+	if m.ConfigServer != nil {
+		{
+			size, err := m.ConfigServer.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintGenerated(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0x12
+	}
+	if m.Shard != nil {
+		{
+			size, err := m.Shard.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintGenerated(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *ShardNode) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *ShardNode) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *ShardNode) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
 	i = encodeVarintGenerated(dAtA, i, uint64(m.Replicas))
 	i--
 	dAtA[i] = 0x10
@@ -3863,6 +4068,16 @@ func encodeVarintGenerated(dAtA []byte, offset int, v uint64) int {
 	dAtA[offset] = uint8(v)
 	return base
 }
+func (m *ConfigNode) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	n += 1 + sovGenerated(uint64(m.Replicas))
+	return n
+}
+
 func (m *ElasticsearchModificationRequest) Size() (n int) {
 	if m == nil {
 		return 0
@@ -4169,6 +4384,16 @@ func (m *MongoDBModificationRequestStatus) Size() (n int) {
 		}
 	}
 	n += 1 + sovGenerated(uint64(m.ObservedGeneration))
+	return n
+}
+
+func (m *MongosNode) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	n += 1 + sovGenerated(uint64(m.Replicas))
 	return n
 }
 
@@ -4616,6 +4841,27 @@ func (m *ScalingSpec) Size() (n int) {
 	}
 	var l int
 	_ = l
+	if m.Shard != nil {
+		l = m.Shard.Size()
+		n += 1 + l + sovGenerated(uint64(l))
+	}
+	if m.ConfigServer != nil {
+		l = m.ConfigServer.Size()
+		n += 1 + l + sovGenerated(uint64(l))
+	}
+	if m.Mongos != nil {
+		l = m.Mongos.Size()
+		n += 1 + l + sovGenerated(uint64(l))
+	}
+	return n
+}
+
+func (m *ShardNode) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
 	n += 1 + sovGenerated(uint64(m.Shards))
 	n += 1 + sovGenerated(uint64(m.Replicas))
 	return n
@@ -4637,6 +4883,16 @@ func sovGenerated(x uint64) (n int) {
 }
 func sozGenerated(x uint64) (n int) {
 	return sovGenerated(uint64((x << 1) ^ uint64((int64(x) >> 63))))
+}
+func (this *ConfigNode) String() string {
+	if this == nil {
+		return "nil"
+	}
+	s := strings.Join([]string{`&ConfigNode{`,
+		`Replicas:` + fmt.Sprintf("%v", this.Replicas) + `,`,
+		`}`,
+	}, "")
+	return s
 }
 func (this *ElasticsearchModificationRequest) String() string {
 	if this == nil {
@@ -4901,6 +5157,16 @@ func (this *MongoDBModificationRequestStatus) String() string {
 		`Reason:` + fmt.Sprintf("%v", this.Reason) + `,`,
 		`Conditions:` + repeatedStringForConditions + `,`,
 		`ObservedGeneration:` + fmt.Sprintf("%v", this.ObservedGeneration) + `,`,
+		`}`,
+	}, "")
+	return s
+}
+func (this *MongosNode) String() string {
+	if this == nil {
+		return "nil"
+	}
+	s := strings.Join([]string{`&MongosNode{`,
+		`Replicas:` + fmt.Sprintf("%v", this.Replicas) + `,`,
 		`}`,
 	}, "")
 	return s
@@ -5300,6 +5566,18 @@ func (this *ScalingSpec) String() string {
 		return "nil"
 	}
 	s := strings.Join([]string{`&ScalingSpec{`,
+		`Shard:` + strings.Replace(this.Shard.String(), "ShardNode", "ShardNode", 1) + `,`,
+		`ConfigServer:` + strings.Replace(this.ConfigServer.String(), "ConfigNode", "ConfigNode", 1) + `,`,
+		`Mongos:` + strings.Replace(this.Mongos.String(), "MongosNode", "MongosNode", 1) + `,`,
+		`}`,
+	}, "")
+	return s
+}
+func (this *ShardNode) String() string {
+	if this == nil {
+		return "nil"
+	}
+	s := strings.Join([]string{`&ShardNode{`,
 		`Shards:` + fmt.Sprintf("%v", this.Shards) + `,`,
 		`Replicas:` + fmt.Sprintf("%v", this.Replicas) + `,`,
 		`}`,
@@ -5323,6 +5601,78 @@ func valueToStringGenerated(v interface{}) string {
 	}
 	pv := reflect.Indirect(rv).Interface()
 	return fmt.Sprintf("*%v", pv)
+}
+func (m *ConfigNode) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowGenerated
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: ConfigNode: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: ConfigNode: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Replicas", wireType)
+			}
+			m.Replicas = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowGenerated
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Replicas |= int32(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		default:
+			iNdEx = preIndex
+			skippy, err := skipGenerated(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthGenerated
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthGenerated
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
 }
 func (m *ElasticsearchModificationRequest) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
@@ -7892,6 +8242,78 @@ func (m *MongoDBModificationRequestStatus) Unmarshal(dAtA []byte) error {
 				b := dAtA[iNdEx]
 				iNdEx++
 				m.ObservedGeneration |= int64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		default:
+			iNdEx = preIndex
+			skippy, err := skipGenerated(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthGenerated
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthGenerated
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MongosNode) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowGenerated
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MongosNode: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MongosNode: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Replicas", wireType)
+			}
+			m.Replicas = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowGenerated
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Replicas |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -11511,6 +11933,167 @@ func (m *ScalingSpec) Unmarshal(dAtA []byte) error {
 		}
 		if fieldNum <= 0 {
 			return fmt.Errorf("proto: ScalingSpec: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Shard", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowGenerated
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthGenerated
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthGenerated
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Shard == nil {
+				m.Shard = &ShardNode{}
+			}
+			if err := m.Shard.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ConfigServer", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowGenerated
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthGenerated
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthGenerated
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.ConfigServer == nil {
+				m.ConfigServer = &ConfigNode{}
+			}
+			if err := m.ConfigServer.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Mongos", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowGenerated
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthGenerated
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthGenerated
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Mongos == nil {
+				m.Mongos = &MongosNode{}
+			}
+			if err := m.Mongos.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipGenerated(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthGenerated
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthGenerated
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *ShardNode) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowGenerated
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: ShardNode: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: ShardNode: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:

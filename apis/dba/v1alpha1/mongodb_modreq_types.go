@@ -59,10 +59,27 @@ type MongoDBModificationRequestSpec struct {
 	Scale *ScalingSpec `json:"scale,omitempty" protobuf:"bytes,4,opt,name=scale"`
 }
 
-// ScalingSpec is the spec for mongodb scaling
-type ScalingSpec struct {
+// ShardNode is the spec for mongodb Shard
+type ShardNode struct {
 	Shards   int32 `json:"shards,omitempty" protobuf:"bytes,1,opt,name=shards"`
 	Replicas int32 `json:"replicas,omitempty" protobuf:"bytes,2,opt,name=replicas"`
+}
+
+// ConfigNode is the spec for mongodb ConfigServer
+type ConfigNode struct {
+	Replicas int32 `json:"replicas,omitempty" protobuf:"bytes,1,opt,name=replicas"`
+}
+
+// MongosNode is the spec for mongodb Mongos
+type MongosNode struct {
+	Replicas int32 `json:"replicas,omitempty" protobuf:"bytes,1,opt,name=replicas"`
+}
+
+// ScalingSpec is the spec for mongodb scaling
+type ScalingSpec struct {
+	Shard        *ShardNode  `json:"shard,omitempty" protobuf:"bytes,1,opt,name=shard"`
+	ConfigServer *ConfigNode `json:"configServer,omitempty" protobuf:"bytes,2,opt,name=configServer"`
+	Mongos       *MongosNode `json:"mongos,omitempty" protobuf:"bytes,3,opt,name=mongos"`
 }
 
 type UpdateSpec struct {

@@ -29,6 +29,11 @@ import "k8s.io/apimachinery/pkg/runtime/schema/generated.proto";
 // Package-wide variables from generator "generated".
 option go_package = "v1alpha1";
 
+// ConfigNode is the spec for mongodb ConfigServer
+message ConfigNode {
+  optional int32 replicas = 1;
+}
+
 // +kubebuilder:object:root=true
 // +kubebuilder:resource:path=elasticsearchmodificationrequests,singular=elasticsearchmodificationrequest,shortName=esmodreq,categories={datastore,kubedb,appscode}
 message ElasticsearchModificationRequest {
@@ -235,6 +240,11 @@ message MongoDBModificationRequestStatus {
   // resource's generation, which is updated on mutation by the API Server.
   // +optional
   optional int64 observedGeneration = 4;
+}
+
+// MongosNode is the spec for mongodb Mongos
+message MongosNode {
+  optional int32 replicas = 1;
 }
 
 // +kubebuilder:object:root=true
@@ -515,6 +525,15 @@ message RedisModificationRequestStatus {
 
 // ScalingSpec is the spec for mongodb scaling
 message ScalingSpec {
+  optional ShardNode shard = 1;
+
+  optional ConfigNode configServer = 2;
+
+  optional MongosNode mongos = 3;
+}
+
+// ShardNode is the spec for mongodb Shard
+message ShardNode {
   optional int32 shards = 1;
 
   optional int32 replicas = 2;
