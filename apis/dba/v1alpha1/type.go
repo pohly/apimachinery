@@ -50,10 +50,8 @@ const (
 type ModificationRequestType string
 
 const (
-	// used for ScaleUp operation
-	ModificationRequestTypeScaleUp ModificationRequestType = "ScaleUp"
-	// used for ScaleDown operation
-	ModificationRequestTypeScaleDown ModificationRequestType = "ScaleDown"
+	// used for HorizontalScaling operation
+	ModificationRequestTypeHorizontalScaling ModificationRequestType = "HorizontalScaling"
 	// used for Upgrade operation
 	ModificationRequestTypeUpgrade ModificationRequestType = "Upgrade"
 	// used for Downgrade operation

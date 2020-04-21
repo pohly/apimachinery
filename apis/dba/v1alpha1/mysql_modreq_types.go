@@ -65,14 +65,22 @@ type UpdateSpec struct {
 	TargetVersion string `json:"targetVersion,omitempty" protobuf:"bytes,1,opt,name=targetVersion"`
 }
 
-// ScaleSpec contains the scaling information of the Elasticsearch
+// ScaleSpec contains the scaling information of the MySQL
 type ScaleSpec struct {
-	// Number of master nodes
-	Master *int32 `json:"master,omitempty" protobuf:"bytes,1,opt,name=master"`
-	// Number of data nodes
-	Data *int32 `json:"data,omitempty" protobuf:"bytes,2,opt,name=data"`
-	// Number of client nodes
-	Client *int32 `json:"client,omitempty" protobuf:"bytes,3,opt,name=client"`
+	// Horizontal specifies the horizontal scaling.
+	Horizontal *HorizontalScale `json:"horizontal,omitempty" protobuf:"bytes,1,opt,name=horizontal"`
+	// Vertical specifies the vertical scaling.
+	Vertical *VerticalScale `json:"vertical,omitempty" protobuf:"bytes,2,opt,name=vertical"`
+}
+
+type HorizontalScale struct {
+	// Number of nodes
+	Node *int32 `json:"node,omitempty" protobuf:"bytes,1,opt,name=node"`
+}
+
+type VerticalScale struct {
+	// Containers represents the containers specification for scaling the requested resources.
+	Containers []v1.Container `json:"containers,omitempty" protobuf:"bytes,1,opt,name=containers"`
 }
 
 // MySQLModificationRequestStatus is the status for MySQLModificationRequest object
