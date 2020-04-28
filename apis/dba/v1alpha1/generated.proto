@@ -122,8 +122,11 @@ message EtcdModificationRequestStatus {
 }
 
 message HorizontalScale {
-  // Number of nodes
+  // Number of nodes/members of the group
   optional int32 node = 1;
+
+  // specifies the weight of the current member/Node
+  optional int64 nodeWeight = 2;
 }
 
 // +kubebuilder:object:root=true

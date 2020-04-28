@@ -17834,7 +17834,14 @@ func schema_apimachinery_apis_dba_v1alpha1_HorizontalScale(ref common.ReferenceC
 				Properties: map[string]spec.Schema{
 					"node": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Number of nodes",
+							Description: "Number of nodes/members of the group",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"nodeWeight": {
+						SchemaProps: spec.SchemaProps{
+							Description: "specifies the weight of the current member/Node",
 							Type:        []string{"integer"},
 							Format:      "int32",
 						},

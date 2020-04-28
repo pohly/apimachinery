@@ -74,8 +74,10 @@ type ScaleSpec struct {
 }
 
 type HorizontalScale struct {
-	// Number of nodes
+	// Number of nodes/members of the group
 	Node *int32 `json:"node,omitempty" protobuf:"bytes,1,opt,name=node"`
+	// specifies the weight of the current member/Node
+	NodeWeight int `json:"nodeWeight,omitempty" protobuf:"bytes,2,opt,name=nodeWeight"`
 }
 
 type VerticalScale struct {
