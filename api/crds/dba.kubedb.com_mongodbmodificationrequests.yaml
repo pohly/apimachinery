@@ -52,7 +52,7 @@ spec:
             request
           properties:
             databaseRef:
-              description: Specifies the Elasticsearch reference
+              description: Specifies the MongoDB reference
               properties:
                 name:
                   description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
@@ -62,29 +62,40 @@ spec:
             scale:
               description: Specifies the field information that needed to be scaled
               properties:
-                configServer:
-                  description: ConfigNode is the spec for mongodb ConfigServer
+                horizontal:
+                  description: HorizontalScaling is the spec for mongodb horizontal
+                    scaling
                   properties:
+                    configServer:
+                      description: ConfigNode is the spec for mongodb ConfigServer
+                      properties:
+                        replicas:
+                          format: int32
+                          type: integer
+                      type: object
+                    mongos:
+                      description: MongosNode is the spec for mongodb Mongos
+                      properties:
+                        replicas:
+                          format: int32
+                          type: integer
+                      type: object
                     replicas:
                       format: int32
                       type: integer
+                    shard:
+                      description: ShardNode is the spec for mongodb Shard
+                      properties:
+                        replicas:
+                          format: int32
+                          type: integer
+                        shards:
+                          format: int32
+                          type: integer
+                      type: object
                   type: object
-                mongos:
-                  description: MongosNode is the spec for mongodb Mongos
-                  properties:
-                    replicas:
-                      format: int32
-                      type: integer
-                  type: object
-                shard:
-                  description: ShardNode is the spec for mongodb Shard
-                  properties:
-                    replicas:
-                      format: int32
-                      type: integer
-                    shards:
-                      format: int32
-                      type: integer
+                vertical:
+                  description: VerticalScaling is the spec for mongodb vertical scaling
                   type: object
               type: object
             type:
@@ -95,7 +106,6 @@ spec:
               description: Specifies the field information that needed to be updated
               properties:
                 targetVersion:
-                  description: Specifies the ElasticsearchVersion object name
                   type: string
               type: object
           required:

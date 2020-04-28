@@ -49,7 +49,7 @@ type MongoDBModificationRequest struct {
 
 // MongoDBModificationRequestSpec is the spec for mongodb modification request
 type MongoDBModificationRequestSpec struct {
-	// Specifies the Elasticsearch reference
+	// Specifies the MongoDB reference
 	DatabaseRef v1.LocalObjectReference `json:"databaseRef" protobuf:"bytes,1,opt,name=databaseRef"`
 	// Specifies the modification request type; ScaleUp, ScaleDown, Upgrade etc.
 	Type ModificationRequestType `json:"type" protobuf:"bytes,2,opt,name=type"`
@@ -75,15 +75,26 @@ type MongosNode struct {
 	Replicas int32 `json:"replicas,omitempty" protobuf:"bytes,1,opt,name=replicas"`
 }
 
-// ScalingSpec is the spec for mongodb scaling
-type ScalingSpec struct {
+// HorizontalScaling is the spec for mongodb horizontal scaling
+type HorizontalScaling struct {
 	Shard        *ShardNode  `json:"shard,omitempty" protobuf:"bytes,1,opt,name=shard"`
 	ConfigServer *ConfigNode `json:"configServer,omitempty" protobuf:"bytes,2,opt,name=configServer"`
 	Mongos       *MongosNode `json:"mongos,omitempty" protobuf:"bytes,3,opt,name=mongos"`
+	Replicas     *int32      `json:"replicas,omitempty" protobuf:"bytes,4,opt,name=replicas"`
 }
 
+// VerticalScaling is the spec for mongodb vertical scaling
+type VerticalScaling struct {
+}
+
+// ScalingSpec is the spec for mongodb scaling
+type ScalingSpec struct {
+	Horizontal *HorizontalScaling `json:"horizontal,omitempty" protobuf:"bytes,1,opt,name=horizontal"`
+	Vertical   *VerticalScaling   `json:"vertical,omitempty" protobuf:"bytes,2,opt,name=vertical"`
+}
+
+// UpdateSpec is the spec for mongodb version update
 type UpdateSpec struct {
-	// Specifies the ElasticsearchVersion object name
 	TargetVersion string `json:"targetVersion,omitempty" protobuf:"bytes,1,opt,name=targetVersion"`
 }
 

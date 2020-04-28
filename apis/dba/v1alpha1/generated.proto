@@ -126,6 +126,17 @@ message EtcdModificationRequestStatus {
   repeated EtcdModificationRequestCondition conditions = 1;
 }
 
+// HorizontalScaling is the spec for mongodb horizontal scaling
+message HorizontalScaling {
+  optional ShardNode shard = 1;
+
+  optional ConfigNode configServer = 2;
+
+  optional MongosNode mongos = 3;
+
+  optional int32 replicas = 4;
+}
+
 // +kubebuilder:object:root=true
 // +kubebuilder:resource:path=memcachedmodificationrequests,singular=memcachedmodificationrequest,shortName=mcmodreq,categories={datastore,kubedb,appscode}
 message MemcachedModificationRequest {
@@ -213,7 +224,7 @@ message MongoDBModificationRequestList {
 
 // MongoDBModificationRequestSpec is the spec for mongodb modification request
 message MongoDBModificationRequestSpec {
-  // Specifies the Elasticsearch reference
+  // Specifies the MongoDB reference
   optional k8s.io.api.core.v1.LocalObjectReference databaseRef = 1;
 
   // Specifies the modification request type; ScaleUp, ScaleDown, Upgrade etc.
@@ -525,11 +536,9 @@ message RedisModificationRequestStatus {
 
 // ScalingSpec is the spec for mongodb scaling
 message ScalingSpec {
-  optional ShardNode shard = 1;
+  optional HorizontalScaling horizontal = 1;
 
-  optional ConfigNode configServer = 2;
-
-  optional MongosNode mongos = 3;
+  optional VerticalScaling vertical = 2;
 }
 
 // ShardNode is the spec for mongodb Shard
@@ -539,8 +548,12 @@ message ShardNode {
   optional int32 replicas = 2;
 }
 
+// UpdateSpec is the spec for mongodb version update
 message UpdateSpec {
-  // Specifies the ElasticsearchVersion object name
   optional string targetVersion = 1;
+}
+
+// VerticalScaling is the spec for mongodb vertical scaling
+message VerticalScaling {
 }
 
