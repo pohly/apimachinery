@@ -66,14 +66,15 @@ spec:
                 horizontal:
                   description: Horizontal specifies the horizontal scaling.
                   properties:
-                    node:
+                    member:
                       description: Number of nodes/members of the group
                       format: int32
                       type: integer
-                    nodeWeight:
-                      description: specifies the weight of the current member/Node
-                      type: integer
                   type: object
+                memberWeight:
+                  description: specifies the weight of the current member/Node
+                  format: int32
+                  type: integer
                 vertical:
                   description: Vertical specifies the vertical scaling.
                   properties:

@@ -71,13 +71,13 @@ type ScaleSpec struct {
 	Horizontal *HorizontalScale `json:"horizontal,omitempty" protobuf:"bytes,1,opt,name=horizontal"`
 	// Vertical specifies the vertical scaling.
 	Vertical *VerticalScale `json:"vertical,omitempty" protobuf:"bytes,2,opt,name=vertical"`
+	// specifies the weight of the current member/Node
+	MemberWeight int32 `json:"memberWeight,omitempty" protobuf:"varint,3,opt,name=memberWeight"`
 }
 
 type HorizontalScale struct {
 	// Number of nodes/members of the group
-	Node *int32 `json:"node,omitempty" protobuf:"bytes,1,opt,name=node"`
-	// specifies the weight of the current member/Node
-	NodeWeight int `json:"nodeWeight,omitempty" protobuf:"bytes,2,opt,name=nodeWeight"`
+	Member *int32 `json:"member,omitempty" protobuf:"varint,1,opt,name=member"`
 }
 
 type VerticalScale struct {

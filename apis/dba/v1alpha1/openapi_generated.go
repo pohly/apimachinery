@@ -17832,16 +17832,9 @@ func schema_apimachinery_apis_dba_v1alpha1_HorizontalScale(ref common.ReferenceC
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"node": {
+					"member": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Number of nodes/members of the group",
-							Type:        []string{"integer"},
-							Format:      "int32",
-						},
-					},
-					"nodeWeight": {
-						SchemaProps: spec.SchemaProps{
-							Description: "specifies the weight of the current member/Node",
 							Type:        []string{"integer"},
 							Format:      "int32",
 						},
@@ -19295,6 +19288,13 @@ func schema_apimachinery_apis_dba_v1alpha1_ScaleSpec(ref common.ReferenceCallbac
 						SchemaProps: spec.SchemaProps{
 							Description: "Vertical specifies the vertical scaling.",
 							Ref:         ref("kubedb.dev/apimachinery/apis/dba/v1alpha1.VerticalScale"),
+						},
+					},
+					"memberWeight": {
+						SchemaProps: spec.SchemaProps{
+							Description: "specifies the weight of the current member/Node",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 				},

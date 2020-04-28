@@ -123,10 +123,7 @@ message EtcdModificationRequestStatus {
 
 message HorizontalScale {
   // Number of nodes/members of the group
-  optional int32 node = 1;
-
-  // specifies the weight of the current member/Node
-  optional int64 nodeWeight = 2;
+  optional int32 member = 1;
 }
 
 // +kubebuilder:object:root=true
@@ -534,6 +531,9 @@ message ScaleSpec {
 
   // Vertical specifies the vertical scaling.
   optional VerticalScale vertical = 2;
+
+  // specifies the weight of the current member/Node
+  optional int32 memberWeight = 3;
 }
 
 message UpdateSpec {
